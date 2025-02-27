@@ -1,0 +1,17 @@
+{% extends '../_base.html' %}
+{% load static %}
+
+{% block title %}
+New Loan Request
+{% endblock %}
+
+{% block content %}
+<div class="space-y-4 w-full">
+    {% include './tab-menu.html' %}
+    <h1 class="text-4xl w-full text-white text-start">
+        Your Loan Requests
+    </h1>
+
+    <p class="text-gray-400 text-sm">See full list of loan requests you have made so far.</p>
+</div>
+{% endblock content %}

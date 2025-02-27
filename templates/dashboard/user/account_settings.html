@@ -1,0 +1,54 @@
+{% extends './_base.html' %}
+{% load static %}
+
+{% block title %}
+Account Settings
+{% endblock %}
+
+{% block content %}
+<div class="space-y-8">
+    <div class="space-y-2">
+        <h2 class="font-bold text-white text-xl">Security Settings</h2>
+        <p class="text-gray-400 text-sm">These settings are helps you keep your Crexstitutes account secure.</p>
+    </div>
+
+    <div class="border border-gray-800 bg-[#141C26] shadow-mg shadow-black rounded-md">
+        <div class="p-4 space-y-2 border-b border-gray-700">
+            <h2 class="font-bold text-white text-md">Save my Activity Logs</h2>
+            <p class="text-gray-400 text-sm">You can save all activity logs including unusual activity detected.</p>
+        </div>
+        <div class="p-4 space-y-2 border-b border-gray-700">
+            <h2 class="font-bold text-white text-md">Security Pin Code</h2>
+            <p class="text-gray-400 text-sm">You can set your pin code, we will ask you this code during login attempts
+                and transactions.</p>
+        </div>
+        <div class="p-4 space-y-2 border-b border-gray-700">
+            <h2 class="font-bold text-white text-md">Security Pin Code <span
+                    class="ml-2 text-xs py-1 px-2 rounded-sm font-medium bg-[#1EE0AC] text-white">Enabled</span>
+            </h2>
+            <p class="text-gray-400 text-sm">Secure your account with 2FA security. When it is activated you will need
+                to enter not only your password, but also a special code using app. You can receive this code by in
+                mobile app.
+            </p>
+        </div>
+    </div>
+
+    <div class="space-y-2">
+        <h2 class="font-bold text-white text-xl">Recent Activity</h2>
+        <p class="text-gray-400 text-sm">This information about recent login activity on your account.</p>
+    </div>
+
+    <div class="border border-gray-800 bg-[#141C26] shadow-mg shadow-black rounded-md">
+        <div
+            class="bg-[#28374B] text-gray-300 grid grid-cols-2 md:grid-cols-3 gap-3 uppercase text-sm px-5 py-3 rounded-md font-medium">
+            <div class="col-span-2">
+                <span>browser</span>
+            </div>
+            <div class="grid grid-cols-2">
+                <span>IP</span>
+                <span>Time</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

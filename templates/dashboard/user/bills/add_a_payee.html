@@ -1,0 +1,97 @@
+{% extends '../_base.html' %}
+{% load static %}
+
+{% block title %}
+Add Payee
+{% endblock %}
+
+{% block content %}
+<div class="space-y-10">
+    {% include './top-banner.html' %}
+
+    <div class="flex flex-col">
+        {% include './tab-menu.html' %}
+
+        <div class="p-8 border border-gray-800 space-y-5 bg-[#141C26] shadow-mg shadow-black">
+
+            <form class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="col-span-3 grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="space-y-2">
+                        <label for="name" class="font-medium text-white text-md">Payee Name</label>
+                        <input type="text" name="name" id="name"
+                            class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-md w-full"
+                            placeholder="Payee Name" />
+                    </div>
+                    <div class="space-y-2">
+                        <label for="method" class="font-medium text-white text-md">Payment Delivery Method</label>
+                        <select name="method" id="method"
+                            class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-md w-full">
+                            <option value="paperCheck">Paper Check</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="space-y-2 col-span-3">
+                    <label for="accountNumber" class="font-medium text-white text-md">Account Number</label>
+                    <input type="text" name="accountNumber" id="accountNumber"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-md w-full"
+                        placeholder="Account Number" />
+                    <div class="flex items-center justify-start text-gray-400 text-xs font-medium">
+                        <span>This is the account number that appears on your bills. If you don't have account number,
+                            you can enter NA
+                        </span>
+                    </div>
+                </div>
+                <div class="space-y-2 col-span-3">
+                    <label for="address1" class="font-medium text-white text-md">Address 1</label>
+                    <input type="text" name="address1" id="address1"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-md w-full"
+                        placeholder="Address 1" />
+                    <div class="flex items-center justify-start text-gray-400 text-xs font-medium">
+                        <span>Enter the payment address that appears on your bill. We'll mail your payment to this
+                            address.
+                        </span>
+                    </div>
+                </div>
+                <div class="space-y-2 col-span-3">
+                    <label for="address2" class="font-medium text-white text-md">Address 2</label>
+                    <input type="text" name="address2" id="address2"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-md w-full"
+                        placeholder="Address 2 (Optional)" />
+                </div>
+                <div class="space-y-2">
+                    <label for="city" class="font-medium text-white text-md">City</label>
+                    <input type="text" name="city" id="city"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-md w-full"
+                        placeholder="City " />
+                </div>
+
+                <div class="space-y-2">
+                    <label for="state" class="font-medium text-white text-md">State</label>
+                    <input type="text" name="state" id="state"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-md w-full"
+                        placeholder="State" />
+                </div>
+                <div class="space-y-2">
+                    <label for="zipcode" class="font-medium text-white text-md">Zipcode</label>
+                    <input type="text" name="zipcode" id="zipcode"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-md w-full"
+                        placeholder="Zipcode" />
+                </div>
+                <div class="space-y-2 col-span-3">
+                    <label for="nickname" class="font-medium text-white text-md">Nickname</label>
+                    <input type="text" name="nickname" id="nickname"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-md w-full"
+                        placeholder="Nickname" />
+                    <div class="flex items-center justify-start text-gray-400 text-xs font-medium">
+                        <span>Optional Nickname are for your personal use only and will not appear on any of your
+                            payment.</span>
+                    </div>
+                </div>
+            </form>
+
+            <button type="submit"
+                class="w-full p-3 rounded-md bg-blue-700 hover:bg-blue-800 duration-300 text-white text-xm font-semibold">Continue</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

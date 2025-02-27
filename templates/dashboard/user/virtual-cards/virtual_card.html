@@ -1,0 +1,33 @@
+{% extends '../_base.html' %}
+{% load static %}
+
+{% block title %}
+Virtual Cards
+{% endblock %}
+
+{% block content %}
+<div class="space-y-10">
+    <div class="space-y-2 text-center mt-2">
+        <h1 class="font-semibold md:text-5xl text-xl text-white">Virtual Debit Card</h1>
+        <p class="text-md text-gray-400 font-medium">Specially designed for your online transactions.</p>
+    </div>
+
+    <div
+        class="w-full md:w-3/4 mx-auto p-20 border border-gray-800 shadow-sm shadow-black rounded-sm space-y-8 flex items-center justify-center flex-col bg-[#141C26]">
+        <i
+            class="w-20 h-20 flex items-center justify-center text-4xl rounded-full border border-gray-500 text-white ti ti-credit-card font-black stroke-2"></i>
+
+        <p class="text-lg font-medium text-gray-500">
+            The Crexstitutes Virtual Debit Card is a digital payment card designed to facilitate frequent online
+            shoppers with a secure and flexible alternative to physical payment cards. The virtual card is instantly
+            issued opon request.
+        </p>
+
+        <a href="{% url 'user:virtual_card_application' %}"
+            class="px-6 py-3 rounded-md bg-blue-700 hover:bg-blue-900 duration-300 text-white font-semibold flex items-center space-x-2">
+            <i class="stroke-2 ti ti-credit-card text-lg"></i>
+            <span>Request for a New Virtual Card</span>
+        </a>
+    </div>
+</div>
+{% endblock %}

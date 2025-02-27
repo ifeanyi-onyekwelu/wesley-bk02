@@ -1,0 +1,15 @@
+<div class="p-5 rounded-sm bg-[#3140FC] text-[#98A5E0] flex items-center space-x-5 border-b border-black">
+    <div class="flex space-x-2 py-2 items-center border-b-4 border-[#1167FE]">
+        <i class="ti ti-wallet text-lg"></i>
+        <a href="{% url 'user:wire_transfer' %}" class="text-md text-[#98A5E0] font-semibold">Send Money</a>
+    </div>
+    <div class="flex space-x-2 py-2 items-center">
+        <i class="ti ti-wallet text-lg"></i>
+        <a href="{% url 'user:add_a_wire_transfer_recipient' %}" class="text-md text-[#98A5E0] font-semibold">Add a
+            Recipient</a>
+    </div>
+    <div class="flex space-x-2 py-2 items-center">
+        <i class="ti ti-wallet text-lg"></i>
+        <a href="{% url 'user:wire_transfer_history' %}" class="text-md text-[#98A5E0] font-semibold">History</a>
+    </div>
+</div>

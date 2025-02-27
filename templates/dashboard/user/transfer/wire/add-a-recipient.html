@@ -1,0 +1,108 @@
+{% extends '../../_base.html' %}
+{% load static %}
+
+{% block title %}
+Add wire transfer recipient
+{% endblock %}
+
+{% block content %}
+<div class="space-y-10">
+    {% include './top-banner.html' %}
+
+    <div class="flex flex-col">
+        {% include './tab-menu.html' %}
+
+        <div class="p-8 border border-gray-800 space-y-5 bg-[#141C26] shadow-mg shadow-black">
+            <h3 class="font-semibold text-gray-600 text-md">Recipient's and banking information</h3>
+
+            <form class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="space-y-2">
+                    <label for="country" class="font-medium text-white text-md">Country</label>
+                    <select name="country" id="country"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-md w-full">
+                        <option value="------">Select Country</option>
+                    </select>
+                </div>
+                <div class="space-y-2">
+                    <label for="state" class="font-medium text-white text-md">State</label>
+                    <select name="state" id="state"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-md w-full">
+                        <option value="------">Select State</option>
+                    </select>
+                </div>
+                <div class="space-y-2">
+                    <label for="city" class="font-medium text-white text-md">City</label>
+                    <input type="text" name="city" id="city"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-md w-full"
+                        placeholder="City" />
+                </div>
+                <div class="space-y-2 col-span-3">
+                    <label for="address" class="font-medium text-white text-md">Address</label>
+                    <input type="text" name="address" id="address"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-md w-full"
+                        placeholder="Address" />
+                </div>
+                <div class="space-y-2">
+                    <label for="postal" class="font-medium text-white text-md">Postal/Zipcode</label>
+                    <input type="text" name="postal" id="postal"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-md w-full"
+                        placeholder="Postal/Zipcode" />
+                </div>
+                <div class="space-y-2">
+                    <label for="email" class="font-medium text-white text-md">Email Address</label>
+                    <input type="email" name="email" id="email"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-md w-full"
+                        placeholder="Email Address" />
+                </div>
+                <div class="space-y-2">
+                    <label for="phone" class="font-medium text-white text-md">Phone Number</label>
+                    <input type="text" name="phone" id="phone"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-md w-full"
+                        placeholder="e.g +1 234 5678" />
+                </div>
+                <div class="space-y-2 col-span-3">
+                    <label for="fullName" class="font-medium text-white text-md">Full Name</label>
+                    <input type="text" name="fullName" id="fullName"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-md w-full"
+                        placeholder="Recipient full name" />
+                </div>
+                <div class="space-y-2 col-span-3">
+                    <label for="transferType" class="font-medium text-white text-md">Transfer Type</label>
+                    <select name="transferType" id="transferType"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-md w-full">
+                        <option value="international">International Transfer</option>
+                    </select>
+                </div>
+                <div class="space-y-2 col-span-3">
+                    <label for="iban" class="font-medium text-white text-md">IBAN</label>
+                    <input type="text" name="iban" id="iban"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-md w-full"
+                        placeholder="IBAN" />
+                    <div class="flex items-center justify-start text-gray-400 text-xs font-medium">
+                        <span>You will have to provide the IBAN for European countries, or the ABA for the United
+                            States.
+                        </span>
+                    </div>
+                </div>
+                <div class="col-span-3 grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="space-y-2">
+                        <label for="switft" class="font-medium text-white text-md">Switft Code</label>
+                        <input type="text" name="switft" id="switft"
+                            class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-md w-full"
+                            placeholder="Swift Code" />
+                    </div>
+                    <div class="space-y-2">
+                        <label for="accountNumber" class="font-medium text-white text-md">Account Number</label>
+                        <input type="text" name="accountNumber" id="accountNumber"
+                            class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-md w-full"
+                            placeholder="Account Number" />
+                    </div>
+                </div>
+            </form>
+
+            <button type="submit"
+                class="w-full p-3 rounded-md bg-blue-700 hover:bg-blue-800 duration-300 text-white text-xm font-semibold">Continue</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

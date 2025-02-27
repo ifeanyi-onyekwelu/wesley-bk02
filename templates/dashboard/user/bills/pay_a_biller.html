@@ -1,0 +1,71 @@
+{% extends '../_base.html' %}
+{% load static %}
+
+{% block title %}
+Pay bills
+{% endblock %}
+
+{% block content %}
+<div class="space-y-10">
+    {% include './top-banner.html' %}
+
+    <div class="flex flex-col">
+        {% include './tab-menu.html' %}
+
+        <div class="p-8 border border-gray-800 space-y-5 bg-[#141C26] shadow-mg shadow-black">
+            <form action="" class="space-y-7">
+
+                <div class="space-y-2 w-full ">
+                    <h3 class="font-semibold text-white">Choose Payment Account</h3>
+
+                    <div class="py-4 px-5 border border-gray-700 rounded-sm space-y-2">
+                        <div class="flex items-center space-x-3">
+                            <i class="ti ti-wallet text-orange-700 font-black text-3xl"></i>
+                            <div class="space-y-1">
+                                <h4 class="text-md text-white">Savings Account</h4>
+                                <p class="text-xs text-gray-500">Balance(USD 0)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cos-1 md:grid-cols-2 gap-5">
+                    <select name="payee" id="payee"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-sm">
+                        <option value="none">Select a payee</option>
+                    </select>
+
+                    <input type="date" name="delivery_date" id="delivery_date"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-sm">
+                </div>
+
+                <div class="space-y-2 w-full ">
+                    <h3 class="font-semibold text-white">Amount</h3>
+
+                    <div class="space-y-1">
+                        <input type="text"
+                            class="py-4 px-5 border border-gray-700 rounded-sm bg-transparent w-full text-gray-200  outline-none"
+                            placeholder="Recipient Account Number" name="amount" id="amount">
+                        <div class="flex items-center justify-end text-gray-400 text-xs font-medium">
+                            <span>*Bill Pay fee will be deducted</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-2 w-full ">
+                    <h3 class="font-semibold text-white">Memo (Optional)</h3>
+
+                    <div class="space-y-1">
+                        <input type="text"
+                            class="py-4 px-5 border border-gray-700 rounded-sm bg-transparent w-full text-gray-200 outline-none"
+                            placeholder="Recipient Account Number" name="memo" id="memo">
+                    </div>
+                </div>
+
+                <button type="submit"
+                    class="w-full p-3 rounded-md bg-blue-700 hover:bg-blue-800 duration-300 text-white text-xm font-semibold">Continue</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'css/tabler-icons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+    <header class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Left: Logo -->
+                <div class="flex items-center">
+                    <img src="logo.png" alt="Logo" class="h-8">
+                    <span class="text-xl font-bold text-gray-800 ml-2">FinBest</span>
+                </div>
+
+                <!-- Center: Navigation -->
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#" class="text-gray-700 hover:text-blue-600">Home</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600">About Us</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600">Services</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600">Pages</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600">Blog</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600">Contact</a>
+                </nav>
+
+                <!-- Right: Contact and CTA -->
+                <div class="flex items-center space-x-4">
+                    <!-- Phone -->
+                    <div class="flex items-center space-x-2">
+                        <div class="p-2 bg-blue-500 rounded-full">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 10v5a2 2 0 002 2h3l2 2h4l2-2h3a2 2 0 002-2v-5M7 10V7a5 5 0 0110 0v3"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Requesting a Call:</p>
+                            <p class="text-lg font-semibold text-gray-800">(629) 555-0129</p>
+                        </div>
+                    </div>
+
+                    <!-- Get a Quote Button -->
+                    <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                        Get a Quote →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+</body>
+
+</html>

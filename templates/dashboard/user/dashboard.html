@@ -1,0 +1,145 @@
+{% extends './_base.html' %}
+{% load static %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+<div class="space-y-7">
+    <div class="p-3 border border-gray-700 text-white rounded-xs">
+        <div class="flex flex-col md:flex-row space-x-4 items-center justify-between">
+            <div class="space-y-1">
+                <h2 class="text-2xl font-normal">Good afternoon Ifeanichukwu Onyekwelu Anthony</h2>
+                <p class="text-gray-500 text-sm">At a glance summary of your account</p>
+            </div>
+
+            <div class="flex items-center justify-between space-x-3">
+                <a href=""
+                    class="px-6 py-2 rounded-sm bg-blue-700 text-white hover:bg-blue-800 duration-300 font-semibold">
+                    Deposit
+                    <i class="ti ti-arrow-right"></i>
+                </a>
+                <a href=""
+                    class="px-6 py-2 rounded-sm bg-gray-500 text-gray-700 hover:bg-gray-600 duration-300 font-semibold">
+                    Transfer Fund
+                    <i class="ti ti-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row md:space-x-5 md:space-y-0 space-y-3">
+        <div class="space-y-2 md:w-1/2 w-full">
+            <h3 class="font-semibold text-white">Overview</h3>
+            <div class="w-full rounded-sm bg-[#0B3175] text-white p-5 py-10 flex items-center justify-between">
+                <div class="flex flex-col space-y-3 items-start w-full md:w-1/2">
+                    <img src="{% static 'images/profile.jpg' %}" alt="User profile image"
+                        class="rounded-full w-[100px] h-[100px]">
+
+                    <div>
+                        <h4 class="text-blue-700 font-semibold text-xs">Last Login</h4>
+                        <p class="text-md text-gray-500">13 Feb 25, 14:14 pm</p>
+                    </div>
+                </div>
+                <div class="flex-flex-col space-y-4 w-full md:w-1/2">
+                    <div>
+                        <h1 class="h3 font-bold text-600 text-sm text-blue-600 mb-1">
+                            Available balance
+                        </h1>
+                        <p class="text-md font-bold text-white">USD 0</p>
+                        <p class="text-gray-500 text-md">Ifeanyichukwu Onyekwelu Anthony
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-blue-600 text-sm font-bold">Your IP address</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col space-y-3 w-full md:w-1/2">
+            <div class="space-y-1">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-lg font-semibold text-white">
+                        Savings Account
+                    </h3>
+                    <a href="" class="text-blue-600 text-md font-semibold">Transfer Fund</a>
+                </div>
+                <div class="p-5 bg-[#0D141D] rounded-sm space-y-2 w-full">
+                    <div class="flex items-center text-white space-x-3">
+                        <p class="p-1 w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
+                            <i
+                                class="ti ti-file bg-white w-full h-full rounded-full text-xs flex items-center justify-center"></i>
+                        </p>
+                        <span class="text-sm">*****97037</span>
+                    </div>
+
+                    <p class="text-md text-white flex items-center space-x-2">
+                        <span>0</span>
+                        <span class="text-gray-500 font-semibold">USD</span>
+                    </p>
+                </div>
+            </div>
+            <div class="space-y-1">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-lg font-semibold text-white">
+                        Loans and lines of credit
+                    </h3>
+                    <a href="" class="text-blue-600 text-md font-semibold">Pay Bills</a>
+                </div>
+                <div class="flex md:flex-row flex-col md:space-x-5 space-y-3 md:space-y-0 ">
+                    <div class="p-5 bg-[#0D141D] rounded-sm space-y-2 w-full md:w-1/2">
+                        <div class="flex items-center text-white space-x-3">
+                            <p class="p-1 w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
+                                <i
+                                    class="ti ti-check bg-white w-full h-full rounded-full text-xs flex items-center justify-center"></i>
+                            </p>
+                            <span class="text-sm">Business Support L...</span>
+                        </div>
+
+                        <p class="text-md text-white flex items-center space-x-2">
+                            <span>0</span>
+                            <span class="text-gray-500 font-semibold">USD</span>
+                        </p>
+                    </div>
+                    <div class="p-5 bg-[#0D141D] rounded-sm space-y-2 w-full md:w-1/2">
+                        <div class="flex items-center text-white space-x-3">
+                            <p class="p-1 w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
+                                <i
+                                    class="ti ti-credit-card bg-white w-full h-full rounded-full text-xs flex items-center justify-center"></i>
+                            </p>
+                            <span class="text-sm">FICO Credit Score</span>
+                        </div>
+
+                        <div class="flex space-x-2 items-center">
+                            <p class="text-md text-white">
+                                300
+                            </p>
+                            <div class="w-5 h-5 rounded-full bg-[#763231]"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="px-12 py-8 rounded-sm text-white border border-gray-800 bg-[#141C26]">
+        <div class="flex md:flex-row flex-col md:space-x-8 md:space-y-0 space-y-3">
+            <div class="space-y-2 w-full md:w-3/4">
+                <h3 class="font-semibold text-white text-2xl">We're here to help you!</h3>
+                <p class="text-sm text-gray-500">
+                    Ask a question or file a support ticket, manage request, report an issues. Our team support team
+                    will get back to you by email.
+                </p>
+            </div>
+
+            <div class="w-full md:w-1/4 flex items-center justify-center">
+                <a href=""
+                    class="w-full px-5 py-3 text-xs rounded-md border border-blue-600 text-blue-600 duration-300 hover:bg-blue-600 hover:text-white text-center">Get
+                    Support Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

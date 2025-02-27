@@ -1,0 +1,77 @@
+{% extends '../_base.html' %}
+{% load static %}
+
+{% block title %}
+Interbank Transfer
+{% endblock %}
+
+{% block content %}
+<div class="space-y-10">
+    <div class="p-5 border border-gray-700 flex items-center">
+        <h1 class="text-3xl font-medium uppercase text-[#188F75] w-full md:w-3/4">PAY FOR GOODS AND SERVICES, TRANSFER
+            MONEY
+            TO FRIENDS AND
+            FAMILY.</h1>
+
+        <a href="" class="px-6 py-2 bg-red-700 hover:bg-red-800 duration-300 rounded-sm text-white font-semibold">Other
+            banks transfer
+            <i class="ti-ti-wallet"></i>
+        </a>
+    </div>
+
+    <div class="space-y-10 md:w-[60%] w-full mx-auto">
+        <h1 class="text-4xl w-full text-white text-center">
+            Transfer to a Crextitutes Account.
+        </h1>
+
+        <div class="space-y-2 w-full ">
+            <h3 class="font-semibold text-white">Select Account</h3>
+
+            <div class="py-4 px-5 border border-gray-700 rounded-sm space-y-2">
+                <div class="flex items-center space-x-3">
+                    <i class="ti ti-currency-dollar text-orange-700 font-black text-3xl"></i>
+                    <div class="space-y-1">
+                        <h4 class="text-md text-white">Savings Account (USD)</h4>
+                        <p class="text-xs text-gray-500">Available balance: USD 0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form class="space-y-10">
+            <div class="space-y-2 w-full ">
+                <h3 class="font-semibold text-white">Account Number</h3>
+
+                <input type="text"
+                    class="py-4 px-5 border border-gray-700 rounded-sm bg-transparent w-full text-gray-200  outline-none"
+                    placeholder="Recipient Account Number">
+            </div>
+
+            <div class="space-y-2 w-full ">
+                <h3 class="font-semibold text-white">Amount to Transfer</h3>
+
+                <div class="space-y-1">
+                    <div class="flex items-center justify-between text-gray-400 text-xs font-medium">
+                        <span>Daily Transfer Limit:</span>
+                        <span>USD 0.00 OF USD 5,000.00</span>
+                    </div>
+                    <input type="text"
+                        class="py-4 px-5 border border-gray-700 rounded-sm bg-transparent w-full text-gray-200  outline-none"
+                        placeholder="Recipient Account Number">
+                    <div class="flex items-center justify-between text-gray-400 text-xs font-medium">
+                        <span>Minimum: 5.00 USD</span>
+                        <span>1 USD = 1 USD</span>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit"
+                class="w-full p-3 rounded-md bg-blue-700 hover:bg-blue-800 duration-300 text-white text-xm font-semibold">Continue
+                to
+                next step</button>
+        </form>
+
+        <p class="italic text-gray-400 font-medium text-sm text-center">Note: our transfer fee is included.</p>
+    </div>
+</div>
+{% endblock content %}

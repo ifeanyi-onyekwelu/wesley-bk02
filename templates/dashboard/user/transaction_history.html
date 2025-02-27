@@ -1,0 +1,63 @@
+{% extends './_base.html' %}
+{% load static %}
+
+{% block title %}
+Transaction History
+{% endblock %}
+
+{% block content %}
+<div class="space-y-10">
+    <div class="flex flex-col">
+        <div class="p-8 border border-gray-800 space-y-5 bg-[#141C26] shadow-mg shadow-black">
+            <div class="flex items-center justify-between">
+                <input type="search" name="search" id="search"
+                    class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-sm md:w-1/4 w-full text-sm"
+                    placeholder="Type in to Search" />
+
+                <div class="flex space-x-2 items-center">
+                    <span class="text-gray-400 text-md">Show</span>
+
+                    <select name="show" id="show"
+                        class="px-5 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-sm w-full">
+                        <option value="10" class="bg-background_primary">10</option>
+                        <option class="bg-background_primary"" value=" 25">25</option>
+                        <option class="bg-background_primary"" value=" 50">50</option>
+                        <option class="bg-background_primary"" value=" 100">100</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="border border-gray-800 bg-[#141C26] shadow-mg shadow-black">
+                <div class="grid grid-cols-2 md:grid-cols-5 border-b border-gray-800">
+                    <div class="px-3 py-2 flex items-center justify-between cursor-pointer">
+                        <span class="font-semibold text-gray-400 text-sm">Recipient</span>
+                        <i class="ti ti-adjustments text-gray-400"></i>
+                    </div>
+                    <div class="px-3 py-2 flex items-center justify-between cursor-pointer">
+                        <span class="font-semibold text-gray-400 text-sm">Ref Number</span>
+                        <i class="ti ti-adjustments text-gray-400"></i>
+                    </div>
+                    <div class="px-3 py-2 flex items-center justify-between cursor-pointer">
+                        <span class="font-semibold text-gray-400 text-sm">Datw</span>
+                        <i class="ti ti-adjustments text-gray-400"></i>
+                    </div>
+                    <div class="px-3 py-2 flex items-center justify-between cursor-pointer">
+                        <span class="font-semibold text-gray-400 text-sm">Amount</span>
+                        <i class="ti ti-adjustments text-gray-400"></i>
+                    </div>
+                    <div class="px-3 py-2 flex items-center justify-between cursor-pointer">
+                        <span class="font-semibold text-gray-400 text-sm">Description</span>
+                        <i class="ti ti-adjustments text-gray-400"></i>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-5">
+                    <div class="col-span-5 p-2">
+                        <h3 class="text-gray-400 text-center">No data available in table</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

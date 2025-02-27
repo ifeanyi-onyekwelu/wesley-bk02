@@ -1,0 +1,116 @@
+{% extends '../_base.html' %}
+{% load static %}
+
+{% block title %}
+New Loan Request
+{% endblock %}
+
+{% block content %}
+<div class="space-y-10 w-full">
+    {% include './tab-menu.html' %}
+    <h1 class="text-4xl w-full text-white text-center">
+        Apply For Crexstitutes Loan
+    </h1>
+
+    <div class="space-y-2 w-full ">
+        <h3 class="font-semibold text-white">Disbursement Account:</h3>
+
+        <div class="py-4 px-5 border border-gray-700 rounded-sm space-y-2">
+            <div class="flex items-center space-x-3">
+                <i class="ti ti-currency-dollar text-orange-700 font-black text-3xl"></i>
+                <div class="space-y-1">
+                    <h4 class="text-md text-white">Savings Account (USD)</h4>
+                    <p class="text-xs text-gray-500">Available balance: USD 0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form class="space-y-10">
+        <div class="space-y-2 w-full ">
+            <h3 class="font-semibold text-white">Loan Amount</h3>
+
+            <input type="text"
+                class="py-4 px-5 border border-gray-700 rounded-sm bg-transparent w-full text-gray-200 outline-none"
+                placeholder="200.00">
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="space-y-2">
+                <label for="facility" class="font-medium text-white text-md">Credit Facility</label>
+                <select type="text" name="country" id="country"
+                    class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-md w-full">
+                    <option value="------">Select Loan/Credit Facility</option>
+                </select>
+            </div>
+            <div class="space-y-2">
+                <label for="tenure" class="font-medium text-white text-md">Repayment Tenure</label>
+                <select type="text" name="tenure" id="tenure"
+                    class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-md w-full">
+                    <option value="------">Payment Tenure</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="space-y-2">
+            <label for="purpose" class="font-medium text-white text-md">Purpose</label>
+            <textarea name="purpose" id="purpose" rows="5"
+                class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-md w-full"
+                placeholder="Briefly explain why you're requesting for this loan"></textarea>
+        </div>
+
+        <hr class="border border-gray-400">
+
+        <p class="text-lg text-gray-400 font-medium">
+            You are requesting for an instant loan, By continueing, you have agreed and accepted the Crexstitutes
+            digital loan terms and conditions.
+        </p>
+
+        <ul class="space-y-3">
+            <h3 class="font-semibold text-gray-400">Terms & Conditions</h3>
+            <li class="flex items-center space-x-2">
+                <i
+                    class="ti ti-check w-3 h-3 rounded-sm bg-blue-600 text-black text-xs flex items-center justify-center"></i>
+                <span class="text-gray-400 font-medium">Interest Rate: 4.3%.</span>
+            </li>
+            <li class="flex items-center space-x-2">
+                <i
+                    class="ti ti-check w-3 h-3 rounded-sm bg-blue-600 text-black text-xs flex items-center justify-center"></i>
+                <span class="text-gray-400 font-medium">Management Fee: 3%.</span>
+            </li>
+            <li class="flex items-center space-x-2">
+                <i
+                    class="ti ti-check w-3 h-3 rounded-sm bg-blue-600 text-black text-xs flex items-center justify-center"></i>
+                <span class="text-gray-400 font-medium">Credit Life Insurance Fee: 0.8%.</span>
+            </li>
+            <li class="flex items-center space-x-2">
+                <i
+                    class="ti ti-check w-3 h-3 rounded-sm bg-blue-600 text-black text-xs flex items-center justify-center"></i>
+                <span class="text-gray-400 font-medium">Penal Charge: 3.5%.</span>
+            </li>
+            <li class="flex items-center space-x-2">
+                <i
+                    class="ti ti-check w-3 h-3 rounded-sm bg-blue-600 text-black text-xs flex items-center justify-center"></i>
+                <span class="text-gray-400 font-medium">Repayment must be made according to my preffered repayment
+                    tenure.</span>
+            </li>
+            <li class="flex items-center space-x-2">
+                <i
+                    class="ti ti-check w-3 h-3 rounded-sm bg-blue-600 text-black text-xs flex items-center justify-center"></i>
+                <span class="text-gray-400 font-medium">I waive 3-days maximum cooling off period to enable
+                    disbursement.</span>
+            </li>
+            <li class="flex items-center space-x-2">
+                <i
+                    class="ti ti-check w-3 h-3 rounded-sm bg-blue-600 text-black text-xs flex items-center justify-center"></i>
+                <span class="text-gray-400 font-medium">I accept that Crexstitutes reserved the right to decline my loan
+                    request.</span>
+            </li>
+        </ul>
+
+        <button type="submit"
+            class="w-full p-3 rounded-md bg-blue-700 hover:bg-blue-800 duration-300 text-white text-xm font-semibold">Continue</button>
+    </form>
+
+</div>
+{% endblock content %}

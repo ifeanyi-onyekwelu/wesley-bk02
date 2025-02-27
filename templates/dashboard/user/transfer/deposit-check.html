@@ -1,0 +1,158 @@
+{% extends '../_base.html' %}
+{% load static %}
+
+{% block title %}
+Deposit Check
+{% endblock %}
+
+{% block content %}
+<div class="space-y-10">
+    <div class="p-3 border border-gray-700 text-white rounded-xs">
+        <div class="flex flex-col md:flex-row space-x-4 items-center justify-between">
+            <div class="space-y-1 w-[70%]">
+                <h2 class="text-2xl font-normal">Internet Banking Check Deposit.</h2>
+                <p class="text-gray-500 text-sm">you can deposit checks by snapping pictures of the front and back of
+                    the check.</p>
+            </div>
+
+            <div class="flex items-center justify-end space-x-3 w-[30%]">
+                <a href="{% url 'user:interbank_transfer' %}"
+                    class="px-6 py-2 rounded-sm bg-gray-700 text-gray-400 hover:bg-gray-600 duration-300 font-semibold">
+                    Transfer Fund
+                    <i class="ti ti-wallet"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-col">
+        <div class="p-5 rounded-sm bg-[#3140FC] text-[#98A5E0] flex items-center space-x-5 border-b border-black">
+            <p class="text-gray-2AZX00 font-semibold te">Deposit a check</p>
+        </div>
+
+        <div class="p-8 border border-gray-800 space-y-5 bg-[#141C26] shadow-mg shadow-black">
+            <h2 class="text-2xl font-bold text-white">Check Deposit tips</h2>
+
+            <ul class="space-y-5">
+                <li class="text-gray-400 font-medium text-sm">
+                    <i
+                        class="ti ti-exclamation-mark w-5 h-5 text-red-600 font-extrabold text-xs border-2 border-red-600 rounded-full"></i>
+                    Choose the account to deposit the check and the check amount.
+                </li>
+                <li class="text-gray-400 font-medium text-sm">
+                    <i
+                        class="ti ti-exclamation-mark w-5 h-5 text-red-600 font-extrabold text-xs border-2 border-red-600 rounded-full"></i>
+                    Ensure the check has been properly endorsed and that it is flat, on a dark, well-lit surface.
+                    Then snap pictures of both the front and back of the check, keeping it in the correct
+                    parameters. Don't forget to endorse and write 'for mobile deposit only' on the back.
+                </li>
+
+                <li class="text-gray-400 font-medium text-sm">
+                    <i
+                        class="ti ti-exclamation-mark w-5 h-5 text-red-600 font-extrabold text-xs border-2 border-red-600 rounded-full"></i>
+                    Submit your check for deposit! We’ll send you an email confirmation that we’ve received your deposit
+                    and an email confirmation once it is accepted. Be sure to hold on to your check until you receive
+                    this confirmation, once received, destroy the check!
+                </li>
+            </ul>
+
+            <hr class="border border-gray-400">
+
+            <div class="space-y-2 w-full ">
+                <h3 class="font-semibold text-white">Select Account</h3>
+
+                <div class="py-4 px-5 border border-gray-700 rounded-sm space-y-2">
+                    <div class="flex items-center space-x-3">
+                        <i class="ti ti-currency-dollar text-orange-700 font-black text-3xl"></i>
+                        <div class="space-y-1">
+                            <h4 class="text-md text-white">Savings Account (USD)</h4>
+                            <p class="text-xs text-gray-500">Available balance: USD 0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form class="space-y-10">
+                <div class="space-y-2 w-full ">
+                    <h3 class="font-semibold text-white">Check Number</h3>
+
+                    <input type="text"
+                        class="py-4 px-5 border border-gray-700 rounded-sm bg-transparent w-full text-gray-200 outline-none"
+                        placeholder="Recipient Account Number" name="amount" id="amount">
+                    <div class="flex items-center justify-end text-gray-400 text-xs font-medium">
+                        <span>You can deposit upto USD for each federal check</span>
+                    </div>
+                </div>
+
+                <div class="flex md:space-x-5 md:flex-row flex-col md:space-y-0 space-y-2">
+                    <div class="space-y-2 md:w-1/2 w-full">
+                        <h3 class="font-semibold text-white">Front of the check</h3>
+
+                        <div id="uploadBox"
+                            class="relative border-2 border-dashed border-gray-300 rounded-md overflow-hidden h-48 flex items-center justify-center cursor-pointer">
+                            <img src="{% static 'images/image.jpg' %}" alt="Default Image" id="previewImage1"
+                                class="absolute object-cover w-full h-full">
+
+                            <input type="file" name="frontCheck" id="frontCheck" accept="image/*"
+                                class="absolute inset-0 opacity-0 cursor-pointer">
+                            <h1 class="z-10 text-2xl font-bold text-white">Front</h1>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2 md:w-1/2 w-full">
+                        <h3 class="font-semibold text-white">Back of the check</h3>
+
+                        <div id="uploadBox2"
+                            class="relative border-2 border-dashed border-gray-300 rounded-md overflow-hidden h-48 flex items-center justify-center cursor-pointer">
+                            <img src="{% static 'images/image.jpg' %}" alt="Default Image" id="previewImage2"
+                                class="absolute object-cover w-full h-full">
+
+                            <input type="file" name="backCheck" id="backCheck" accept="image/*"
+                                class="absolute inset-0 opacity-0 cursor-pointer">
+                            <h1 class="z-10 text-2xl font-bold text-white">Back</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit"
+                    class="w-full p-3 rounded-md bg-blue-700 hover:bg-blue-800 duration-300 text-white text-xm font-semibold">Submit
+                    Check</button>
+            </form>
+
+            <p class="italic text-gray-400 font-medium text-sm text-center">Note: our Flash fund fee will be debucted
+                from your account following the completion of this deposit.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    const frontCheck = document.getElementById("frontCheck");
+    const backCheck = document.getElementById("backCheck");
+    const previewImage1 = document.getElementById("previewImage1");
+    const previewImage2 = document.getElementById("previewImage2");
+
+    frontCheck.addEventListener('change', function (event) {
+        const file = event.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                previewImage1.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    backCheck.addEventListener('change', function (event) {
+        const file = event.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                previewImage2.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
+{% endblock content %}

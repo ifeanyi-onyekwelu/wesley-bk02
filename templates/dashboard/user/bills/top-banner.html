@@ -1,0 +1,15 @@
+<div class="p-3 border border-gray-700 text-white rounded-xs">
+    <div class="flex flex-col md:flex-row space-x-4 items-center justify-between">
+        <div class="space-y-1 w-[70%]">
+            <h2 class="text-2xl font-normal">Internet Banking Bill Pay.</h2>
+        </div>
+
+        <div class="flex items-center justify-end space-x-3 w-[30%]">
+            <a href="{% url 'user:interbank_transfer' %}"
+                class="px-6 py-2 rounded-sm bg-gray-700 text-gray-400 hover:bg-gray-600 duration-300 font-semibold">
+                Transfer Fund
+                <i class="ti ti-wallet"></i>
+            </a>
+        </div>
+    </div>
+</div>

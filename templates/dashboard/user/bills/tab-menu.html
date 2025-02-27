@@ -1,0 +1,15 @@
+<div class="p-5 rounded-sm bg-[#3140FC] text-[#98A5E0] flex items-center space-x-5 border-b border-black">
+    <div class="flex space-x-2 py-2 items-center border-b-4 border-[#1167FE]">
+        <i class="ti ti-wallet text-lg"></i>
+        <a href="{% url 'user:pay_a_biller' %}" class="text-md text-[#98A5E0] font-semibold">Pay a Biller</a>
+    </div>
+    <div class="flex space-x-2 py-2 items-center">
+        <i class="ti ti-wallet text-lg"></i>
+        <a href="{% url 'user:add_a_payee' %}" class="text-md text-[#98A5E0] font-semibold">Add a
+            Payee</a>
+    </div>
+    <div class="flex space-x-2 py-2 items-center">
+        <i class="ti ti-wallet text-lg"></i>
+        <a href="{% url 'user:pay_a_biller_history' %}" class="text-md text-[#98A5E0] font-semibold">History</a>
+    </div>
+</div>

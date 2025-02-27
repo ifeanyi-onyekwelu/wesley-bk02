@@ -1,0 +1,147 @@
+{% extends '../_base.html' %}
+{% load static %}
+
+{% block title %}
+Card Application
+{% endblock %}
+
+{% block content %}
+<div class="space-y-10">
+    <div class="space-y-2 text-center mt-2">
+        <h1 class="font-semibold md:text-5xl text-xl text-white">Visual Card Application</h1>
+        <p class="text-md text-gray-400 font-medium">The virtual card is issued instantly when requested on Internet
+            Banking. To request, <br />Fill the form below;.</p>
+    </div>
+
+    <div class="w-full md:w-3/4 mx-auto bg-[#141C26] shadow-sm border border-gray-700 rounded-sm">
+        <div class="p-8 space-x-3 flex items-center border-b border-gray-700">
+            <span
+                class="w-12 h-12 text-2xl flex items-center justify-center text-gray-400 rounded-full border-2 border-gray-400">01</span>
+            <span class="font-semibold text-2xl text-white">Personal Details</span>
+        </div>
+
+        <div class="p-8 space-y-5">
+            <div class="flex items-start space-x-2">
+                <i class="ti ti-exclamation-mark bg-gray-400 text-gray-800 p-1 rounded-full"></i>
+                <span class="text-gray-500 text-sm">Please type carefully and fill out the form with your personal
+                    details. Your can't edit these details once you submitted the form.
+                </span>
+            </div>
+
+            <form action="" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="space-y-2 col-span-3">
+                    <label for="name" class="text-white font-semibold text-md">Card Holder Name<span
+                            class="text-red-700">*</span></label>
+                    <input type="text" name="name" id="name"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-sm w-full"
+                        placeholder="Card Holder Name">
+                </div>
+                <div class="col-span-3 grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="space-y-2">
+                        <label for="phone" class="text-white font-semibold text-md">Phone Number<span
+                                class="text-red-700">*</span></label>
+                        <input type="text" name="phone" id="phone"
+                            class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-sm w-full"
+                            placeholder="Phone Number">
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="email" class="text-white font-semibold text-md">Email Address<span
+                                class="text-red-700">*</span></label>
+                        <input type="email" name="email" id="email"
+                            class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-sm w-full"
+                            placeholder="Email Address">
+                    </div>
+                </div>
+                <div class="space-y-2 col-span-3">
+                    <label for="address" class="text-white font-semibold text-md">Address<span
+                            class="text-red-700">*</span></label>
+                    <input type="text" name="address" id="address"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-sm w-full"
+                        placeholder="Address">
+                </div>
+                <div class="col-span-3 grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="space-y-2">
+                        <label for="phone" class="text-white font-semibold text-md">Security Auestion<span
+                                class="text-red-700">*</span></label>
+                        <select name="phone" id="phone"
+                            class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-sm w-full">
+                            <option value="----">Please Select Question</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="answer" class="text-white font-semibold text-md">Answer<span
+                                class="text-red-700">*</span></label>
+                        <input type="text" name="answer" id="answer"
+                            class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-sm w-full"
+                            placeholder="Answer">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="p-8 space-x-3 flex items-center border-b border-t border-gray-700">
+            <span
+                class="w-12 h-12 text-2xl flex items-center justify-center text-gray-400 rounded-full border-2 border-gray-400">02</span>
+            <span class="font-semibold text-2xl text-white">Card Preference</span>
+        </div>
+
+        <div class="p-8 space-y-5 border-b border-gray-700">
+            <div class="flex items-start space-x-2">
+                <i class="ti ti-exclamation-mark bg-gray-400 text-gray-800 p-1 rounded-full"></i>
+                <span class="text-gray-500 text-sm">Kindly select your preferred visual card type.</span>
+            </div>
+
+            <h3 class="font-semibold text-md text-white">Features and Benefits of Crex Visual Card:</h3>
+
+            <ul class="space-y-3">
+                <li class="flex items-center space-x-2">
+                    <i
+                        class="ti ti-check w-3 h-3 rounded-sm bg-blue-600 text-black text-xs flex items-center justify-center"></i>
+                    <span class="text-gray-400 font-medium">It's Virtual: You don't need to carry it out around to use
+                        it for online
+                        transactions as it's
+                        virtually available on your Internet Banking.
+                    </span>
+                </li>
+                <li class="flex items-center space-x-2">
+                    <i
+                        class="ti ti-check w-3 h-3 rounded-sm bg-blue-600 text-black text-xs flex items-center justify-center"></i>
+                    <span class="text-gray-400 font-medium">The card can be loaded from your existing Account via
+                        Internet
+                        Banking.</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                    <i
+                        class="ti ti-check w-3 h-3 rounded-sm bg-blue-600 text-black text-xs flex items-center justify-center"></i>
+                    <span class="text-gray-400 font-medium">It's readily available after approval.</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                    <i
+                        class="ti ti-check w-3 h-3 rounded-sm bg-blue-600 text-black text-xs flex items-center justify-center"></i>
+                    <span class="text-gray-400 font-medium">It valid for 3 years.</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="p-8 space-y-5">
+            <div class="flex items-center space-x-3">
+                <input type="checkbox" name="terms" id="terms" required
+                    class="w-8 h-8 rounded-sm bg-[#141C26] border-2 border-gray-500" />
+                <p class="text-gray-300">I Have Read The <a href=""
+                        class="text-blue-700 hover:text-blue-500 duration-300">Terms of Condition</a> and <a href=""
+                        class="text-blue-700 hover:text-blue-500 duration-300">Privacy Policy</a></p>
+            </div>
+            <div class="flex items-center space-x-3">
+                <input type="checkbox" name="terms" id="terms" required
+                    class="w-8 h-8 rounded-sm bg-[#141C26] border-2 border-gray-500" />
+                <p class="text-gray-300">All The Personal Information I Have Entered Is Correct.</p>
+            </div>
+
+            <button type="submit"
+                class="px-6 py-3 rounded-md bg-blue-700 text-white font-medium text-md hover:bg-blue-600 duration-300">Apply</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

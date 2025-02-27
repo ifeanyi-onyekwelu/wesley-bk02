@@ -1,0 +1,270 @@
+{% extends '../_base.html' %}
+{% load static %}
+
+{% block title %}
+KYC ID Verification
+{% endblock %}
+
+{% block content %}
+<div class="space-y-10">
+    <div class="space-y-2 text-center mt-2">
+        <h1 class="font-semibold md:text-5xl text-xl text-white">Begin your ID-Verification</h1>
+        <p class="text-md text-gray-400 font-medium md:w-3/4 w-full mx-auto">To comply with regulation each participant
+            will have to go through
+            indentity verification (KYC/AML) to prevent fraud causes.</p>
+    </div>
+
+    <div class="w-full md:w-3/4 mx-auto bg-[#141C26] shadow-sm border border-gray-700 rounded-sm">
+        <div class="p-8 space-x-3 flex items-center border-b border-gray-700">
+            <span
+                class="w-12 h-12 text-2xl flex items-center justify-center text-gray-400 rounded-full border-2 border-gray-400">01</span>
+            <span class="font-semibold text-2xl text-white">Personal Details</span>
+        </div>
+
+        <div class="p-8 space-y-5">
+            <div class="flex items-start space-x-2">
+                <i class="ti ti-exclamation-mark bg-gray-400 text-gray-800 p-1 rounded-full"></i>
+                <span class="text-gray-500 text-sm">Please type carefully and fill out the form with your personal
+                    details. Your can't edit these details once you submitted the form.
+                </span>
+            </div>
+
+            <form action="" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="col-span-3 grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="space-y-2">
+                        <label for="firstName" class="text-white font-semibold text-md">First Name<span
+                                class="text-red-700">*</span></label>
+                        <input type="text" name="firstName" id="firstName"
+                            class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-sm w-full"
+                            placeholder="First Name">
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="lastName" class="text-white font-semibold text-md">Last Name<span
+                                class="text-red-700">*</span></label>
+                        <input type="text" name="lastName" id="lastName"
+                            class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-sm w-full"
+                            placeholder="Last Name">
+                    </div>
+                </div>
+                <div class="col-span-3 grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="space-y-2">
+                        <label for="email" class="text-white font-semibold text-md">Email Address<span
+                                class="text-red-700">*</span></label>
+                        <input type="email" name="email" id="email"
+                            class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-sm w-full"
+                            placeholder="Email Address">
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="phone" class="text-white font-semibold text-md">Phone Number<span
+                                class="text-red-700">*</span></label>
+                        <input type="text" name="phone" id="phone"
+                            class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-sm w-full"
+                            placeholder="Phone Number">
+                    </div>
+                </div>
+                <div class="col-span-3 grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="space-y-2">
+                        <label for="dateOfBirth" class="text-white font-semibold text-md">Date of Birth<span
+                                class="text-red-700">*</span></label>
+                        <input type="date" name="dateOfBirth" id="dateOfBirth"
+                            class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-sm w-full"
+                            placeholder="Date of Birth">
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="accountNumber" class="text-white font-semibold text-md">Account Number<span
+                                class="text-red-700">*</span></label>
+                        <input type="text" name="accountNumber" id="accountNumber"
+                            class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-sm w-full"
+                            placeholder="Account Number">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="p-8 space-x-3 flex items-center border-b border-t border-gray-700">
+            <span
+                class="w-12 h-12 text-2xl flex items-center justify-center text-gray-400 rounded-full border-2 border-gray-400">02</span>
+            <span class="font-semibold text-2xl text-white">Your Address</span>
+        </div>
+
+        <div class="p-8 space-y-5 border-b border-gray-700">
+            <div class="flex items-start space-x-2">
+                <i class="ti ti-exclamation-mark bg-gray-400 text-gray-800 p-1 rounded-full"></i>
+                <span class="text-gray-500 text-sm">Your can't edit these details once you submitted the form.</span>
+            </div>
+
+            <div class="col-span-3 grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="space-y-2">
+                    <label for="address1" class="text-white font-semibold text-md">Address Line 1<span
+                            class="text-red-700">*</span></label>
+                    <input type="text" name="address1" id="address1"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-sm w-full"
+                        placeholder="Address Line 1">
+                </div>
+
+                <div class="space-y-2">
+                    <label for="address2" class="text-white font-semibold text-md">Address Line 2</label>
+                    <input type="text" name="address2" id="address2"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-sm w-full"
+                        placeholder="Address Line 2">
+                </div>
+            </div>
+            <div class="col-span-3 grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="space-y-2">
+                    <label for="city" class="text-white font-semibold text-md">City<span
+                            class="text-red-700">*</span></label>
+                    <input type="text" name="city" id="city"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-sm w-full"
+                        placeholder="City">
+                </div>
+
+                <div class="space-y-2">
+                    <label for="state" class="text-white font-semibold text-md">State<span
+                            class="text-red-700">*</span></label>
+                    <input type="text" name="state" id="state"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-sm w-full"
+                        placeholder="State">
+                </div>
+            </div>
+
+            <div class="col-span-3 grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="space-y-2">
+                    <label for="nationality" class="text-white font-semibold text-md">Nationality<span
+                            class="text-red-700">*</span></label>
+                    <input type="text" name="nationality" id="nationality"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-sm w-full"
+                        placeholder="Nationality">
+                </div>
+
+                <div class="space-y-2">
+                    <label for="zipcode" class="text-white font-semibold text-md">Zip Code<span
+                            class="text-red-700">*</span></label>
+                    <input type="text" name="zipcode" id="zipcode"
+                        class="px-3 py-2 border border-gray-500 bg-transparent text-white outline-none rounded-sm w-full"
+                        placeholder="Zip Code">
+                </div>
+            </div>
+        </div>
+
+        <div class="p-8 space-x-3 flex items-center border-b border-t border-gray-700">
+            <span
+                class="w-12 h-12 text-2xl flex items-center justify-center text-gray-400 rounded-full border-2 border-gray-400">03</span>
+            <span class="font-semibold text-2xl text-white">Document Upload</span>
+        </div>
+
+        <div class="p-8 space-y-5 border-b border-gray-700">
+            <div class="flex items-start space-x-2">
+                <i class="ti ti-exclamation-mark bg-gray-400 text-gray-800 p-1 rounded-full"></i>
+                <span class="text-gray-500 text-sm">In order to complete, please upload any of the following personal
+                    document.</span>
+            </div>
+
+            <h3 class="font-semibold text-md text-white">To avoid delays when verifying account, Please make sure
+                bellow:</h3>
+
+            <ul class="space-y-3">
+                <li class="flex items-center space-x-2">
+                    <i
+                        class="ti ti-check w-3 h-3 rounded-sm bg-blue-600 text-black text-xs flex items-center justify-center"></i>
+                    <span class="text-gray-400 font-medium">Chosen credential must not be expired.</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                    <i
+                        class="ti ti-check w-3 h-3 rounded-sm bg-blue-600 text-black text-xs flex items-center justify-center"></i>
+                    <span class="text-gray-400 font-medium">Document should be in good condition and clearly
+                        visible.</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                    <i
+                        class="ti ti-check w-3 h-3 rounded-sm bg-blue-600 text-black text-xs flex items-center justify-center"></i>
+                    <span class="text-gray-400 font-medium">Make sure that there is no light glare on the card..</span>
+                </li>
+            </ul>
+
+            <h3 class="text-white font-semibold text-md">Upload Here</h3>
+
+            <div class="flex md:space-x-5 md:flex-row flex-col md:space-y-0 space-y-2">
+                <div class="space-y-2 md:w-1/2 w-full">
+                    <h3 class="font-semibold text-white">Front</h3>
+
+                    <div id="uploadBox"
+                        class="relative border-2 border-dashed border-gray-300 rounded-md overflow-hidden h-48 flex items-center justify-center cursor-pointer">
+                        <img src="{% static 'images/image.jpg' %}" alt="Default Image" id="previewImage1"
+                            class="absolute object-cover w-full h-full">
+
+                        <input type="file" name="frontCheck" id="frontCheck" accept="image/*"
+                            class="absolute inset-0 opacity-0 cursor-pointer">
+                        <h1 class="z-10 text-2xl font-bold text-white">Front</h1>
+                    </div>
+                </div>
+
+                <div class="space-y-2 md:w-1/2 w-full">
+                    <h3 class="font-semibold text-white">Back</h3>
+
+                    <div id="uploadBox2"
+                        class="relative border-2 border-dashed border-gray-300 rounded-md overflow-hidden h-48 flex items-center justify-center cursor-pointer">
+                        <img src="{% static 'images/image.jpg' %}" alt="Default Image" id="previewImage2"
+                            class="absolute object-cover w-full h-full">
+
+                        <input type="file" name="backCheck" id="backCheck" accept="image/*"
+                            class="absolute inset-0 opacity-0 cursor-pointer">
+                        <h1 class="z-10 text-2xl font-bold text-white">Back</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-8 space-y-5">
+            <div class="flex items-center space-x-3">
+                <input type="checkbox" name="terms" id="terms" required
+                    class="w-8 h-8 rounded-sm bg-[#141C26] border-2 border-gray-500" />
+                <p class="text-gray-300">I Have Read The <a href=""
+                        class="text-blue-700 hover:text-blue-500 duration-300">Terms of Condition</a> and <a href=""
+                        class="text-blue-700 hover:text-blue-500 duration-300">Privacy Policy</a></p>
+            </div>
+            <div class="flex items-center space-x-3">
+                <input type="checkbox" name="terms" id="terms" required
+                    class="w-8 h-8 rounded-sm bg-[#141C26] border-2 border-gray-500" />
+                <p class="text-gray-300">All The Personal Information I Have Entered Is Correct.</p>
+            </div>
+
+            <button type="submit"
+                class="px-6 py-3 rounded-md bg-blue-700 text-white font-medium text-md hover:bg-blue-600 duration-300">Submit</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const frontCheck = document.getElementById("frontCheck");
+    const backCheck = document.getElementById("backCheck");
+    const previewImage1 = document.getElementById("previewImage1");
+    const previewImage2 = document.getElementById("previewImage2");
+
+    frontCheck.addEventListener('change', function (event) {
+        const file = event.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                previewImage1.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    backCheck.addEventListener('change', function (event) {
+        const file = event.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                previewImage2.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
+{% endblock %}

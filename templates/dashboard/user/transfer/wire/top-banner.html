@@ -1,0 +1,22 @@
+<div class="p-3 border border-gray-700 text-white rounded-xs">
+    <div class="flex flex-col md:flex-row space-x-4 items-center justify-between">
+        <div class="space-y-1 w-[70%]">
+            <h2 class="text-2xl font-normal">Cross-border transfer</h2>
+            <p class="text-gray-500 text-sm">Cross-border transfer is fast and safe way to send money across
+                different countries. The funds are deposited into the recipient's bank account associated with the
+                IBAN or Swift Code you have added.</p>
+        </div>
+
+        <div class="flex items-center justify-end space-x-3 w-[30%]">
+            <a href="{% url 'user:interbank_transfer' %}"
+                class="px-6 py-2 rounded-sm bg-gray-700 text-gray-400 hover:bg-gray-600 duration-300 font-semibold">
+                Local Transfer
+                <i class="ti ti-wallet"></i>
+            </a>
+            <a href=""
+                class="px-3 py-2 rounded-sm border border-gray-500 text-white hover:bg-gray-600 duration-300 font-semibold">
+                <i class="ti ti-settings"></i>
+            </a>
+        </div>
+    </div>
+</div>

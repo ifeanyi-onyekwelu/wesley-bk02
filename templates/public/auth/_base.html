@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crextitutes | {% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'css/tabler-icons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="{% static 'js/jquery-2.2.4.min.js' %}"></script>
+</head>
+
+<body>
+    <div class="flex items-center justify-center flex-col bg-[#EDEDED] p-10 space-y-10">
+        <div id="error-message"
+            class="p-3 rounded-md bg-red-700 text-white flex items-center space-x-4 w-3/4 cursor-pointer transition-discrete">
+            <i
+                class="ti ti-exclamation-mark border-2 border-white stroke-2 w-5 h-5 text-xs rounded-full flex items-center justify-center"></i>
+
+            <p class="text-xs font-semibold">An error occured! Try again</p>
+        </div>
+        <div id="success-message"
+            class="p-3 rounded-md bg-green-700 text-white hidden items-center space-x-4 w-3/4 absolute right-5 cursor-pointer transition-discrete">
+            <i
+                class="ti ti-check border-2 border-white stroke-2 w-5 h-5 text-xs rounded-full flex items-center justify-center"></i>
+
+            <p class="text-xs font-semibold">Login Successful, Please verify your account</p>
+        </div>
+
+        <div class="flex flex-col items-center justify-center w-full md:w-3/4 space-y-3">
+            <h2 class="text-5xl font-black text-background-primary"><a href="">Crextitutes</a></h2>
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </div>
+</body>
+
+</html>
