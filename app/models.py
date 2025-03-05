@@ -47,20 +47,13 @@ class BankAccount(models.Model):
         ("CURRENT", "Current"),
     ]
 
-    CURRENCY_CHOICES = [
-        ("USD", "US Dollar"),
-        ("NGN", "Nigerian Naira"),
-        ("EUR", "Euro"),
-    ]
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     account_number = models.CharField(
         max_length=10, unique=True, default=generate_account_number
     )
-    account_type = models.CharField(max_length=10, choices=ACCOUNT_TYPES)
-    account_currency = models.CharField(
-        max_length=5, choices=CURRENCY_CHOICES, default="USD"
-    )
+    account_type = models.CharField(max_length=50, choices=ACCOUNT_TYPES)
+    account_currency = models.CharField(max_length=255)
     is_blocked = models.BooleanField(default=False)
     balance = models.DecimalField(max_digits=15, decimal_places=2, default=0.00)
     transaction_pin = models.CharField(max_length=6)

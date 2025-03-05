@@ -7,57 +7,275 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
 
+
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.css' %}">
     <link rel="stylesheet" href="{% static 'css/tabler-icons.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/public.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 </head>
 
 <body>
-    <header class="bg-white shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-4">
-                <!-- Left: Logo -->
-                <div class="flex items-center">
-                    <img src="logo.png" alt="Logo" class="h-8">
-                    <span class="text-xl font-bold text-gray-800 ml-2">FinBest</span>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+    <!-- Header -->
+    <div class="sub-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-xs-12">
+                    <ul class="left-info">
+                        <li><a href="#"><i class="ti ti-clock"></i>Mon-Fri 09:00-17:00</a></li>
+                        <li><a href="#"><i class="ti ti-phone"></i>090-080-0760</a></li>
+                        <li><a href="#"><i class="ti ti-mail"></i>support@crextitutes.com</a></li>
+                    </ul>
                 </div>
-
-                <!-- Center: Navigation -->
-                <nav class="hidden md:flex space-x-6">
-                    <a href="#" class="text-gray-700 hover:text-blue-600">Home</a>
-                    <a href="#" class="text-gray-700 hover:text-blue-600">About Us</a>
-                    <a href="#" class="text-gray-700 hover:text-blue-600">Services</a>
-                    <a href="#" class="text-gray-700 hover:text-blue-600">Pages</a>
-                    <a href="#" class="text-gray-700 hover:text-blue-600">Blog</a>
-                    <a href="#" class="text-gray-700 hover:text-blue-600">Contact</a>
-                </nav>
-
-                <!-- Right: Contact and CTA -->
-                <div class="flex items-center space-x-4">
-                    <!-- Phone -->
-                    <div class="flex items-center space-x-2">
-                        <div class="p-2 bg-blue-500 rounded-full">
-                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 10v5a2 2 0 002 2h3l2 2h4l2-2h3a2 2 0 002-2v-5M7 10V7a5 5 0 0110 0v3"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <p class="text-sm text-gray-500">Requesting a Call:</p>
-                            <p class="text-lg font-semibold text-gray-800">(629) 555-0129</p>
-                        </div>
-                    </div>
-
-                    <!-- Get a Quote Button -->
-                    <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-                        Get a Quote →
-                    </a>
+                <div class="col-md-4">
+                    <ul class="right-icons">
+                        <li><a href="#"><i class="ti ti-brand-facebook"></i></a></li>
+                        <li><a href="#"><i class="ti ti-brand-twitter"></i></a></li>
+                        <li><a href="#"><i class="ti ti-brand-linkedin"></i></a></li>
+                        <li><a href="#"><i class="ti ti-brand-behance"></i></a></li>
+                    </ul>
                 </div>
             </div>
         </div>
+    </div>
+
+    <header class="">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <h2>Finance Business</h2>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Home Link -->
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#top">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+
+                        <!-- About Us -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About Us</a>
+                        </li>
+
+                        <!-- Services Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownServices" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Services
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownServices">
+                                <a class="dropdown-item" href="personal-banking.html">Personal Banking</a>
+                                <a class="dropdown-item" href="business-banking.html">Business Banking</a>
+                                <a class="dropdown-item" href="wealth-management.html">Wealth Management</a>
+                                <a class="dropdown-item" href="insurance.html">Insurance</a>
+                            </div>
+                        </li>
+
+                        <!-- Accounts Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAccounts" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Accounts
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownAccounts">
+                                <a class="dropdown-item" href="savings.html">Savings Account</a>
+                                <a class="dropdown-item" href="current.html">Current Account</a>
+                                <div class="dropdown-submenu">
+                                    <a class="dropdown-item dropdown-toggle" href="#">Loans & Mortgages</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="personal-loans.html">Personal Loans</a></li>
+                                        <li><a class="dropdown-item" href="business-loans.html">Business Loans</a></li>
+                                        <li><a class="dropdown-item" href="home-loans.html">Home Loans</a></li>
+                                    </ul>
+                                </div>
+                                <a class="dropdown-item" href="investments.html">Investments</a>
+                            </div>
+                        </li>
+
+                        <!-- Contact Us -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact Us</a>
+                        </li>
+
+                        <!-- Online Banking Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBanking" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Online Banking
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownBanking">
+                                <a class="dropdown-item" href="{% url 'auth:login' %}">Login</a>
+                                <a class="dropdown-item" href="{% url 'auth:signup' %}">Register</a>
+                                <a class="dropdown-item" href="{% url 'auth:forgot_password' %}">Forgot Password</a>
+                            </div>
+                        </li>
+
+                        <!-- FAQ -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="faq.html">FAQ</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
+
+    <!-- Nested Dropdown (Deep Dropdown) CSS -->
+    <style>
+        .dropdown-submenu {
+            position: relative;
+        }
+
+        .dropdown-submenu>.dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: 0;
+            margin-left: .1rem;
+            display: none;
+        }
+
+        .dropdown-submenu:hover>.dropdown-menu {
+            display: block;
+        }
+
+        .navbar-nav .nav-link {
+            padding: 10px 15px;
+        }
+    </style>
+
+
 
     {% block content %}
     {% endblock %}
+
+    <!-- Footer Starts Here -->
+    <footer class="banking-footer">
+        <div class="container">
+            <div class="row">
+                <!-- About Section -->
+                <div class="col-md-3 footer-item">
+                    <h4>About Our Bank</h4>
+                    <p>Your trusted partner for secure banking, savings, and investment solutions. Serving you with
+                        modern
+                        financial services tailored to your needs.</p>
+                    <ul class="social-icons">
+                        <li><a href="#"><i class="ti ti-brand-facebook"></i></a></li>
+                        <li><a href="#"><i class="ti ti-brand-twitter"></i></a></li>
+                        <li><a href="#"><i class="ti ti-brand-linkedin"></i></a></li>
+                        <li><a href="#"><i class="ti ti-brand-instagram"></i></a></li>
+                    </ul>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="col-md-3 footer-item">
+                    <h4>Quick Links</h4>
+                    <ul class="menu-list">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Personal Banking</a></li>
+                        <li><a href="#">Business Banking</a></li>
+                        <li><a href="#">Loans & Mortgages</a></li>
+                        <li><a href="#">Investments</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Useful Sub Links -->
+                <div class="col-md-3 footer-item">
+                    <h4>Products & Services</h4>
+                    <ul class="menu-list">
+                        <li><a href="#">Savings Accounts</a></li>
+                        <li><a href="#">Checking Accounts</a></li>
+                        <li><a href="#">Credit Cards</a></li>
+                        <li><a href="#">Business Loans</a></li>
+                        <li><a href="#">Investment Plans</a></li>
+                        <li><a href="#">Mobile Banking App</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter & T&C -->
+                <div class="col-md-3 footer-item last-item">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe to our newsletter for the latest updates and offers.</p>
+                    <form action="#" method="post" class="newsletter-form">
+                        <input type="email" class="form-control" placeholder="Enter your email" required>
+                        <button type="submit" class="filled-button">Subscribe</button>
+                    </form>
+                    <br>
+                    <ul class="menu-list small-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Security Tips</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sub Footer with Copyright -->
+    <div class="sub-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Copyright &copy; 2025 YourBankName. All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Scripts -->
+    <script src="{% static 'js/aos.js' %}"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+    <script src="{% static 'js/owl.js' %}"></script>
+    <script src="{% static 'js/slick.js' %}"></script>
+    <script src="{% static 'js/accordions.js' %}"></script>
+
+    <script language="text/Javascript">
+        cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+        function clearField(t) {                   //declaring the array outside of the
+            if (!cleared[t.id]) {                      // function makes it static and global
+                cleared[t.id] = 1;  // you could use true and false, but that's more typing
+                t.value = '';         // with more chance of typos
+                t.style.color = '#fff';
+            }
+        }
+    </script>
+
+    <script>
+        AOS.init({
+            offset: 200,      // Trigger animation 200px before the element reaches the viewport
+            duration: 1000,   // Animation lasts for 1 second
+            delay: 200,       // Delay the animation by 0.2 seconds
+            once: true,       // Animation triggers only once
+            easing: 'ease-in-out',  // Smooth easing function
+            mirror: false,    // Animation does not trigger again when scrolling up
+            anchorPlacement: 'top-bottom'  // The animation will trigger when the top of the element reaches the bottom of the viewport
+        });
+    </script>
+
+
+</body>
 </body>
 
 </html>

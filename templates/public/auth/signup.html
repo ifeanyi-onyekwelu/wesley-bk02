@@ -6,7 +6,7 @@ Sign Up
 {% endblock %}
 
 {% block content %}
-<div class="w-full">
+<div class="w-full form-container">
     <div class="p-4 text-white bg-background_primary flex space-x-2 items-center">
         <i class="ti ti-user-plus"></i>
         <h2 class="font-bold text-xs md:text-lg"> Kindly provide the information requested below to enable us create an
@@ -18,7 +18,8 @@ Sign Up
         <h4 class="text-gray-500 font-semibold text-md">Personal Details</h4>
         <hr>
 
-        <form method="post" id="signupForm">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
             <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-5">
                 <div class="grid grid-cols-1 md:grid-cols-3 col-span-3 gap-5">
                     <div class="space-y-2">
@@ -45,14 +46,15 @@ Sign Up
                         <label for="country" class="font-medium text-sm text-gray-800">Country</label>
                         <select name="country" id="country"
                             class="w-full px-3 py-2 text-sm rounded-sm border border-gray-300 bg-none outline-none">
-                            <option value="------">Select Country</option>
+                            <option>select country</option>
                         </select>
                     </div>
+
                     <div class="space-y-2">
                         <label for="state" class="font-medium text-sm text-gray-800">State</label>
                         <select name="state" id="state"
                             class="w-full px-3 py-2 text-sm rounded-sm border border-gray-300 bg-none outline-none">
-                            <option value="------">Select State</option>
+                            <option>...</option>
                         </select></select>
                     </div>
                     <div class="space-y-2">
@@ -81,10 +83,10 @@ Sign Up
                     </div>
 
                     <div class="space-y-2 col-span-2">
-                        <label for="address" class="font-medium text-sm text-gray-800">House Address</label>
+                        <label for="address1" class="font-medium text-sm text-gray-800">House Address</label>
                         <input type="text"
                             class="w-full px-3 py-2 text-sm rounded-sm border border-gray-300 bg-none outline-none"
-                            name="address" id="address" placeholder="House Address" aria-label="House Address">
+                            name="address1" id="address1" placeholder="House Address" aria-label="House Address">
                     </div>
                 </div>
 
@@ -112,15 +114,33 @@ Sign Up
                         <label for="occupation" class="font-medium text-sm text-gray-800">Occupation</label>
                         <select name="occupation" id="occupation"
                             class="w-full px-3 py-2 text-sm rounded-sm border border-gray-300 bg-none outline-none">
-                            <option value="------">Select Type of Employment</option>
+                            <option value="">Select Type of Employment</option>
+                            <option value="Self Employed">Self Employed</option>
+                            <option value="Public/Government Office">Public/Government Office</option>
+                            <option value="Private/Partnership Office">Private/Partnership Office</option>
+                            <option value="Business/Sales">Business/Sales</option>
+                            <option value="Trading/Market">Trading/Market</option>
+                            <option value="Military/Paramilitary">Military/Paramilitary</option>
+                            <option value="Politician/Celebrity">Politician/Celebrity</option>
+                        </select>
                         </select>
                     </div>
                     <div class="space-y-2">
                         <label for="income" class="font-medium text-sm text-gray-800">Annual Income range</label>
                         <select name="income" id="income"
                             class="w-full px-3 py-2 text-sm rounded-sm border border-gray-300 bg-none outline-none">
-                            <option value="------">Select salary range</option>
-                        </select></select>
+                            <option value="$100.00 - $500.00">$100.00 - $500.00</option>
+                            <option value="$700.00 - $1,000.00">$700.00 - $1,000.00</option>
+                            <option value="$1,000.00 - $2,000.00">$1,000.00 - $2,000.00</option>
+                            <option value="$2,000.00 - $5,000.00">$2,000.00 - $5,000.00</option>
+                            <option value="$5,000.00 - $10,000.00">$5,000.00 - $10,000.00</option>
+                            <option value="$15,000.00 - $20,000.00">$15,000.00 - $20,000.00</option>
+                            <option value="$25,000.00 - $30,000.00">$25,000.00 - $30,000.00</option>
+                            <option value="$30,000.00 - $70,000.00">$30,000.00 - $70,000.00</option>
+                            <option value="$80,000.00 - $140,000.00">$80,000.00 - $140,000.00</option>
+                            <option value="$150,000.00 - $300,000.00">$150,000.00 - $300,000.00</option>
+                            <option value="$300,000.00 - $1,000,000.00">$300,000.00 - $1,000,000.00</option>
+                        </select>
                     </div>
                 </div>
 
@@ -143,16 +163,146 @@ Sign Up
                         <label for="accountType" class="font-medium text-sm text-gray-800">Account Type</label>
                         <select name="accountType" id="accountType"
                             class="w-full px-3 py-2 text-sm rounded-sm border border-gray-300 bg-none outline-none">
-                            <option value="------">Select account type</option>
-                        </select></select>
+                            <option value="">Please select Account Type</option>
+                            <option value="Checking Account">Checking Account</option>
+                            <option value="Savings Account">Saving Account</option>
+                            <option value="Fixed Deposit Account">Fixed Deposit Account</option>
+                            <option value="Current Account">Current Account</option>
+                            <option value="Crypto Currency Account">Crypto Currency Account</option>
+                            <option value="Business Account">Business Account</option>
+                            <option value="Non Resident Account">Non Resident Account</option>
+                            <option value="Cooperate Business Account">Cooperate Business Account</option>
+                            <option value="Investment Account">Investment Account</option>
+                        </select>
                     </div>
 
                     <div class="space-y-2">
                         <label for="currency" class="font-medium text-sm text-gray-800">Account Currency</label>
                         <select name="currency" id="currency"
                             class="w-full px-3 py-2 text-sm rounded-sm border border-gray-300 bg-none outline-none">
-                            <option value="------">American (United States) Dollars - USD</option>
-                        </select></select>
+                            <option value="USD">America (United States) Dollars – USD</option>
+                            <option value="AFN">Afghanistan Afghanis – AFN</option>
+                            <option value="ALL">Albania Leke – ALL</option>
+                            <option value="DZD">Algeria Dinars – DZD</option>
+                            <option value="ARS">Argentina Pesos – ARS</option>
+                            <option value="AUD">Australia Dollars – AUD</option>
+                            <option value="ATS">Austria Schillings – ATS</option>
+
+                            <option value="BSD">Bahamas Dollars – BSD</option>
+                            <option value="BHD">Bahrain Dinars – BHD</option>
+                            <option value="BDT">Bangladesh Taka – BDT</option>
+                            <option value="BBD">Barbados Dollars – BBD</option>
+                            <option value="BEF">Belgium Francs – BEF</option>
+                            <option value="BMD">Bermuda Dollars – BMD</option>
+
+                            <option value="BRL">Brazil Reais – BRL</option>
+                            <option value="BGN">Bulgaria Leva – BGN</option>
+                            <option value="CAD">Canada Dollars – CAD</option>
+                            <option value="XOF">CFA BCEAO Francs – XOF</option>
+                            <option value="XAF">CFA BEAC Francs – XAF</option>
+                            <option value="CLP">Chile Pesos – CLP</option>
+
+                            <option value="CNY">China Yuan Renminbi – CNY</option>
+                            <option value="CNY">RMB (China Yuan Renminbi) – CNY</option>
+                            <option value="COP">Colombia Pesos – COP</option>
+                            <option value="XPF">CFP Francs – XPF</option>
+                            <option value="CRC">Costa Rica Colones – CRC</option>
+                            <option value="HRK">Croatia Kuna – HRK</option>
+
+                            <option value="CYP">Cyprus Pounds – CYP</option>
+                            <option value="CZK">Czech Republic Koruny – CZK</option>
+                            <option value="DKK">Denmark Kroner – DKK</option>
+                            <option value="DEM">Deutsche (Germany) Marks – DEM</option>
+                            <option value="DOP">Dominican Republic Pesos – DOP</option>
+                            <option value="NLG">Dutch (Netherlands) Guilders – NLG</option>
+
+                            <option value="XCD">Eastern Caribbean Dollars – XCD</option>
+                            <option value="EGP">Egypt Pounds – EGP</option>
+                            <option value="EEK">Estonia Krooni – EEK</option>
+                            <option value="EUR">Euro – EUR</option>
+                            <option value="FJD">Fiji Dollars – FJD</option>
+                            <option value="FIM">Finland Markkaa – FIM</option>
+
+                            <option value="FRF*">France Francs – FRF*</option>
+                            <option value="DEM">Germany Deutsche Marks – DEM</option>
+                            <option value="XAU">Gold Ounces – XAU</option>
+                            <option value="GRD">Greece Drachmae – GRD</option>
+                            <option value="GTQ">Guatemalan Quetzal – GTQ</option>
+                            <option value="NLG">Holland (Netherlands) Guilders – NLG</option>
+                            <option value="HKD">Hong Kong Dollars – HKD</option>
+
+                            <option value="HUF">Hungary Forint – HUF</option>
+                            <option value="ISK">Iceland Kronur – ISK</option>
+                            <option value="XDR">IMF Special Drawing Right – XDR</option>
+                            <option value="INR">India Rupees – INR</option>
+                            <option value="IDR">Indonesia Rupiahs – IDR</option>
+                            <option value="IRR">Iran Rials – IRR</option>
+
+                            <option value="IQD">Iraq Dinars – IQD</option>
+                            <option value="IEP*">Ireland Pounds – IEP*</option>
+                            <option value="ILS">Israel New Shekels – ILS</option>
+                            <option value="ITL*">Italy Lire – ITL*</option>
+                            <option value="JMD">Jamaica Dollars – JMD</option>
+                            <option value="JPY">Japan Yen – JPY</option>
+
+                            <option value="JOD">Jordan Dinars – JOD</option>
+                            <option value="KES">Kenya Shillings – KES</option>
+                            <option value="KRW">Korea (South) Won – KRW</option>
+                            <option value="KWD">Kuwait Dinars – KWD</option>
+                            <option value="LBP">Lebanon Pounds – LBP</option>
+                            <option value="LUF">Luxembourg Francs – LUF</option>
+
+                            <option value="MYR">Malaysia Ringgits – MYR</option>
+                            <option value="MTL">Malta Liri – MTL</option>
+                            <option value="MUR">Mauritius Rupees – MUR</option>
+                            <option value="MXN">Mexico Pesos – MXN</option>
+                            <option value="MAD">Morocco Dirhams – MAD</option>
+                            <option value="NLG">Netherlands Guilders – NLG</option>
+
+                            <option value="NZD">New Zealand Dollars – NZD</option>
+                            <option value="NGN">Nigeria Naira – NGN</option>
+                            <option value="NOK">Norway Kroner – NOK</option>
+                            <option value="OMR">Oman Rials – OMR</option>
+                            <option value="PKR">Pakistan Rupees – PKR</option>
+                            <option value="XPD">Palladium Ounces – XPD</option>
+                            <option value="PEN">Peru Nuevos Soles – PEN</option>
+
+                            <option value="PHP">Philippines Pesos – PHP</option>
+                            <option value="XPT">Platinum Ounces – XPT</option>
+                            <option value="PLN">Poland Zlotych – PLN</option>
+                            <option value="PTE">Portugal Escudos – PTE</option>
+                            <option value="QAR">Qatar Riyals – QAR</option>
+                            <option value="RON">Romania New Lei – RON</option>
+
+                            <option value="ROL">Romania Lei – ROL</option>
+                            <option value="RUB">Russia Rubles – RUB</option>
+                            <option value="SAR">Saudi Arabia Riyals – SAR</option>
+                            <option value="XAG">Silver Ounces – XAG</option>
+                            <option value="SGD">Singapore Dollars – SGD</option>
+                            <option value="SKK">Slovakia Koruny – SKK</option>
+
+                            <option value="SIT">Slovenia Tolars – SIT</option>
+                            <option value="ZAR">South Africa Rand – ZAR</option>
+                            <option value="KRW">South Korea Won – KRW</option>
+                            <option value="ESP">Spain Pesetas – ESP</option>
+
+                            <option value="SDD">Sudan Dinars – SDD</option>
+                            <option value="SEK">Sweden Kronor – SEK</option>
+                            <option value="CHF">Switzerland Francs – CHF</option>
+                            <option value="TWD">Taiwan New Dollars – TWD</option>
+                            <option value="THB">Thailand Baht – THB</option>
+                            <option value="TTD">Trinidad and Tobago Dollars – TTD</option>
+
+                            <option value="TND">Tunisia Dinars – TND</option>
+                            <option value="TRY">Turkey New Lira – TRY</option>
+                            <option value="AED">United Arab Emirates Dirhams – AED</option>
+                            <option value="GBP">United Kingdom Pounds – GBP</option>
+                            <option value="USD">United States Dollars – USD</option>
+                            <option value="VEB">Venezuela Bolivares – VEB</option>
+
+                            <option value="VND">Vietnam Dong – VND</option>
+                            <option value="ZMK">Zambia Kwacha – ZMK</option>
+                        </select>
                     </div>
                 </div>
 
@@ -161,7 +311,7 @@ Sign Up
                         <label for="pin" class="font-medium text-sm text-gray-800">2FA PIN</label>
                         <input type="text"
                             class="w-full px-3 py-2 text-sm rounded-sm border border-gray-300 bg-none outline-none"
-                            name="pin" id="pin" placeholder="2FA PIN" aria-label="2FA PIN">
+                            name="pin" id="pin" placeholder="2FA PIN" aria-label="2FA PIN" maxlength="4">
                     </div>
 
                     <div class="space-y-2">
@@ -221,32 +371,50 @@ Sign Up
 </div>
 
 <script>
-    $(document).ready(function () {
-        $("#error-message, #success-message").hide();
+    var user_country_code = "US";
 
-        $("#signupForm").submit(function (e) {
-            e.preventDefault();
-            let formData = new FormData(this);
+    const country_list = country_and_states.country;
+    const state_list = country_and_states.states;
 
-            $.ajax({
-                type: "POST",
-                url: "{% url 'auth:signup' %}",
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (response) {
-                    if (response.success) {
-                        window.location.href = "{% url 'auth:login' %}";
-                    } else {
-                        // Handle validation errors
-                        alert(response.errors);
-                    }
-                },
-                error: function (xhr) {
-                    alert("An error occurred. Please try again.");
-                }
-            });
+    const id_state_option = document.getElementById("state");
+    const id_country_option = document.getElementById("country");
+
+    const create_country_selection = () => {
+        let option = '';
+        option += '<option value="">select country</option>';
+        for (const country_code in country_list) {
+            // set selected option user country
+            let selected = (country_code == user_country_code) ? ' selected' : '';
+            option += '<option value="' + country_code + '"' + selected + '> '
+                + country_list[country_code] + '</option>';
+        }
+        id_country_option.innerHTML = option;
+    };
+
+    const create_states_selection = () => {
+        // selected country code
+        let selected_country_code = id_country_option.value;
+        // get state names by selected country-code
+        let state_names = state_list[selected_country_code];
+
+        // if invalid country code
+        if (!state_names) {
+            id_state_option.innerHTML = '<option>select state</option>';
+            return;
+        }
+        // create option
+        let option = '';
+        option += '<option>select state</option>';
+        state_names.forEach(state => {
+            option += '<option value="' + state.code + '">' + state.name + '</option>';
         });
-    });
+        id_state_option.innerHTML = option;
+    };
+
+    // country select change event update state code
+    id_country_option.addEventListener('change', create_states_selection);
+
+    create_country_selection();
+    create_states_selection();
 </script>
 {% endblock %}

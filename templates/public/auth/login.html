@@ -15,9 +15,9 @@ Login
     </div>
 
     <div class="p-3 space-y-4 bg-white">
-
         <!-- Login Form -->
-        <form class="mt-8 space-y-6" method="POST" id="loginForm">
+        <form method="post" class="space-y-4">
+            {% csrf_token %}
             <div class="rounded-md shadow-sm space-y-4">
                 <!-- Account Number Input -->
                 <div>
@@ -96,39 +96,4 @@ Login
         </div>
     </div>
 </div>
-
-<script>
-    $(document).ready(function () {
-        $("#error-message, #success-message").hide();
-
-        $("#loginForm").submit(function (e) {
-            e.preventDefault();
-
-            let formData = new FormData(this);
-
-            $.ajax({
-                type: "POST",
-                url: "{% url 'auth:login' %}",
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (response) {
-                    console.log(response);
-
-                    if (response.success === true) {
-                        $("#error-message").hide();
-                        $("#success-message").show().find("p").text(response.message); // Show success message and update text
-                    } else {
-                        $("#success-message").hide(); // Hide success message
-                        $("#error-message").show().find("p").text(response.message); // Show error message and update text
-                    }
-                },
-                error: function (error) {
-                    $("#success-message").hide(); // Hide success message
-                    $("#error-message").show().find("p").text("An error occurred. Please try again"); // Show error message
-                }
-            })
-        })
-    })
-</script>
 {% endblock %}

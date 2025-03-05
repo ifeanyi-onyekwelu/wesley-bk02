@@ -21,4 +21,9 @@ urlpatterns = [
         name="reset_password_done",
     ),
     path("logout/", views.logout_view, name="logout"),
+    path("verify-account/", views.verify_account, name="verify_account"),
+    path("verify-login/", views.verify_login, name="verify_login"),
+    path("resend-verification/", views.resend_verification_email, name="resend_verification"),
+    path("resend-password-reset/", views.resend_password_reset_email, name="resend_password_reset"),
+    path("resend-login-verification/", views.resend_verify_login_email, name="resend_verify_login"),
 ]

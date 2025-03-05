@@ -1,7 +1,195 @@
 {% extends './_base.html' %}
 {% load static %}
-{% block title%}Home{%endblock%}
+
 
 {% block content %}
-<h1>Home Page</h1>
-{% endblock %}
+<style>
+  .testimonial-card {
+    transition: all 0.3s ease;
+  }
+
+  .testimonial-card:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .testimonials .section-heading em {
+    font-style: normal;
+    color: #007bff;
+  }
+
+  .callback-form h2 span {
+    color: #007bff;
+  }
+
+  .callback-form .form-control {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px 15px;
+    font-size: 15px;
+  }
+
+  .callback-form textarea {
+    resize: none;
+  }
+
+  .callback-form button {
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+  }
+
+  .callback-form button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+  }
+</style>
+
+<div class="main-banner header-text" id="top">
+  <div class="Modern-Slider">
+    <!-- Item -->
+    <div class="item item-1">
+      <div class="img-fill">
+        <div class="text-content">
+          <h6>Your Trusted Banking Partner</h6>
+          <h4>Secure & Reliable Financial Services</h4>
+          <p>We offer a wide range of banking solutions tailored to your needs. From personal banking to business
+            accounts, our goal is to help you manage your finances with ease and security.</p>
+          <a href="services.html" class="filled-button">Explore Our Services</a>
+        </div>
+      </div>
+    </div>
+    <!-- // Item -->
+    <!-- Item -->
+    <div class="item item-2">
+      <div class="img-fill">
+        <div class="text-content">
+          <h6>Innovative Solutions for You</h6>
+          <h4>Investment & Wealth Management</h4>
+          <p>Grow your wealth with our expert guidance. We provide investment options and tools to ensure your financial
+            future is secure and prosperous.</p>
+          <a href="investment.html" class="filled-button">Learn More About Investments</a>
+        </div>
+      </div>
+    </div>
+    <!-- // Item -->
+    <!-- Item -->
+    <div class="item item-3">
+      <div class="img-fill">
+        <div class="text-content">
+          <h6>Your Future Starts Here</h6>
+          <h4>Loans & Credit Services</h4>
+          <p>Access the funds you need with our competitive loan offerings. Whether you're planning a home purchase or
+            funding your business, we provide flexible options.</p>
+          <a href="loans.html" class="filled-button">Apply for a Loan</a>
+        </div>
+      </div>
+    </div>
+    <!-- // Item -->
+  </div>
+</div>
+
+<div class="request-form">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h4>Request a Call Back Now</h4>
+        <span>Need assistance with your account? We're here to help! Our experts are available to provide immediate
+          support.</span>
+      </div>
+      <div class="col-md-4">
+        <a href="contact.html" class="border-button">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="services">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="service-item">
+          <img src="{% static 'images/service_01.jpg' %}" alt="">
+          <div class="down-content">
+            <h4>
+              <a href="" class="underline">Digital Currency</a>
+            </h4>
+            <p>Sed tincidunt dictum lobortis. Aenean tempus diam vel augue luctus dignissim. Nunc ornare leo tortor.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-item">
+          <img src="{% static 'images/service_02.jpg' %}" alt="">
+          <div class="down-content">
+            <h4>
+              <a href="" class="underline">Market Analysis</a>
+            </h4>
+            <p>Sed tincidunt dictum lobortis. Aenean tempus diam vel augue luctus dignissim. Nunc ornare leo tortor.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-item">
+          <img src="{% static 'images/service_03.jpg' %}" alt="">
+          <div class="down-content">
+            <h4>
+              <a href="" class="underline">Historical Data</a>
+            </h4>
+            <p>Sed tincidunt dictum lobortis. Aenean tempus diam vel augue luctus dignissim. Nunc ornare leo tortor.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="fun-facts">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="left-content">
+          <span>Lorem ipsum dolor sit amet</span>
+          <h2>Our solutions for your <em>business growth</em></h2>
+          <p>Pellentesque ultrices at turpis in vestibulum. Aenean pretium elit nec congue elementum. Nulla luctus
+            laoreet porta. Maecenas at nisi tempus, porta metus vitae, faucibus augue.
+            <br><br>Fusce et venenatis ex. Quisque varius, velit quis dictum sagittis, odio velit molestie nunc, ut
+            posuere ante tortor ut neque.
+          </p>
+          <a href="" class="filled-button">Read More</a>
+        </div>
+      </div>
+      <div class="col-md-6 align-self-center">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="count-area-content">
+              <div class="count-digit">945</div>
+              <div class="count-title">Work Hours</div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="count-area-content">
+              <div class="count-digit">1280</div>
+              <div class="count-title">Great Reviews</div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="count-area-content">
+              <div class="count-digit">578</div>
+              <div class="count-title">Projects Done</div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="count-area-content">
+              <div class="count-digit">26</div>
+              <div class="count-title">Awards Won</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock content %}

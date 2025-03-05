@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = get_env_variable("SECRET_KEY", "secretkey")
 
-DEBUG = get_env_variable("DEBUG", "True") == "True"
+DEBUG = get_env_variable("DEBUG", "false").lower() == "true"
 
 ALLOWED_HOSTS = []
 
@@ -24,7 +24,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.humanize",
     # 3rd Party Apps
-    "django_browser_reload",
     # Local apps
     "app.apps.AppConfig",
     "users.apps.UsersConfig",
@@ -65,12 +64,12 @@ WSGI_APPLICATION = "banking.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": get_env_variable("DB_NAME", "mydatabase"),
-        "USER": get_env_variable("DB_USER", "myuser"),
-        "PASSWORD": get_env_variable("DB_PASSWORD", "mypassword"),
-        "HOST": get_env_variable("DB_HOST", "localhost"),
-        "PORT": get_env_variable("DB_PORT", "5432"),
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": get_env_variable("MYSQL_NAME", "mydatabase"),
+        "USER": get_env_variable("MYSQL_USER", "myuser"),
+        "PASSWORD": get_env_variable("MYSQL_PASSWORD", "mypassword"),
+        "HOST": get_env_variable("MYSQL_HOST", "localhost"),
+        "PORT": get_env_variable("MYSQL_PORT", "5432"),
     }
 }
 
@@ -108,10 +107,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 EMAIL_BACKEND = get_env_variable(
     "EMAIL_BACKEND", "django.core.mail.backends.smtp.EmailBackend"
 )
-EMAIL_HOST = get_env_variable("EMAIL_HOST", "smtp.gmail.com")
-EMAIL_PORT = int(get_env_variable("EMAIL_PORT", 587))  # Convert to integer
-EMAIL_USE_TLS = get_env_variable("EMAIL_USE_TLS", "True") == "True"
-EMAIL_USE_SSL = get_env_variable("EMAIL_USE_SSL", "False") == "True"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
 EMAIL_HOST_USER = get_env_variable("EMAIL_HOST_USER", "your-email@example.com")
 EMAIL_HOST_PASSWORD = get_env_variable("EMAIL_HOST_PASSWORD", "your-email-password")
 

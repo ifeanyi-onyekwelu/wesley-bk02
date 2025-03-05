@@ -1,21 +1,17 @@
-from django.shortcuts import render
-from django.contrib.auth import login
-from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
+from django.contrib.auth import login, logout
 from app.models import BankAccount
 from users.models import User
-import random
+from django.db import transaction
 from django.utils.timezone import now
-import random
-from django.utils.timezone import now
-from django.contrib.auth import login, logout
-from django.contrib.auth.hashers import make_password
-from django.views.decorators.csrf import csrf_exempt
 from utils.helpers import json_response, send_email
+from datetime import timedelta
+from django.contrib import messages
 
 template_root = "public/auth"
 
 
-@csrf_exempt
 def signup_view(request):
     if request.method == "GET":
         return render(request, f"{template_root}/signup.html")
@@ -67,21 +63,31 @@ def signup_view(request):
         ]
 
         if any(field is None or field == "" for field in required_fields):
-            return json_response(False, "All fields are required.", status=400)
+            messages.error(request, "All fields are required.")
+            return redirect("auth:signup")
 
-        if User.objects.filter(email=email).exists():
-            return json_response(False, "Email already exists.", status=400)
-
-        if User.objects.filter(phone_number=phone_number).exists():
-            return json_response(False, "Phone number already exists.", status=400)
+        if password1 != password2:
+            messages.error(request, "Passwords do not match.")
+            return redirect("auth:signup")
 
         if len(transaction_pin) != 4 or not transaction_pin.isdigit():
-            return json_response(
-                False, "Transaction PIN must be a 4-digit number.", status=400
-            )
+            messages.error(request, "Transaction PIN must be a 4-digit number.")
+            return redirect("auth:signup")
+
+        if User.objects.filter(email=email).exists():
+            messages.error(request, "Email already exists.")
+            return redirect("auth:signup")
+
+        if User.objects.filter(phone_number=phone_number).exists():
+            messages.error(request, "Phone number already exists.")
+            return redirect("auth:signup")
+
+        if User.objects.filter(ssn_tin=ssn_tin).exists():
+            messages.error(request, "SSN already linked with an account.")
+            return redirect("auth:signup")
 
         # Create User
-        user = User.objects.create_user(
+        user = User(
             first_name=first_name,
             middle_name=middle_name,
             last_name=last_name,
@@ -93,12 +99,14 @@ def signup_view(request):
             country=country,
             email=email,
             phone_number=phone_number,
-            password=make_password(password1),
             ssn_tin=ssn_tin,
             occupation=occupation,
             annual_income=annual_income,
             passport=passport,
         )
+        
+        user.set_password(password1)
+        user.save()
 
         # Create a Bank Account
         bank_account = BankAccount.objects.create(
@@ -107,50 +115,195 @@ def signup_view(request):
             account_currency=account_currency,
             transaction_pin=transaction_pin,
         )
-
-        # Send Verification Email
-        verification_code = random.randint(100000, 999999)
+        
+        context = {
+            "subject": "Verify Your Account",
+            "first_name": first_name,
+            "last_name": last_name,
+            "account_number": bank_account.account_number,
+            "account_type": account_type,
+            "account_currency": account_currency,
+            "annual_income": annual_income,
+            "transaction_pin": transaction_pin,
+        }
+        
         send_email(
-            "Verify Your Account",
-            f"Your verification code is {verification_code}",
-            [email],
+            "Verify Your Account",  # Subject
+            "email/auth/account_verification_email.html",  # Template path
+            context,  # Context data to be passed to the template
+            [email],  # Recipient list
         )
 
-        return json_response(
-            True,
-            "Signup successful, verify your email.",
-            {"account_number": bank_account.account_number},
+        # Generate a random verification code
+        verification_code = user.generate_verification_code()
+
+        # Send the Verification Code Email
+        verification_context = {
+            "subject": "Your Verification Code",
+            "verification_code": verification_code,
+        }
+
+        send_email(
+            "Verify Your Account",  # Subject
+            "email/auth/verification_code_email.html",  # Path to a simple verification code template
+            verification_context,  # Context with the verification code
+            [email],  # Recipient list
         )
 
+        messages.success(request, "Signup successful! Please verify your email.")
+        return redirect("auth:verify_account")
 
-@csrf_exempt
+
 def login_view(request):
     if request.method == "GET":
         return render(request, f"{template_root}/login.html")
 
     if request.method == "POST":
-        account_number = request.POST.get("account_number")
+        account_number = request.POST.get("account-number")
         password = request.POST.get("password")
 
         try:
             bank_account = BankAccount.objects.get(account_number=account_number)
             user = bank_account.user
         except BankAccount.DoesNotExist:
-            return json_response(False, "Invalid account number.", status=200)
+            messages.error(request, "Invalid account number or password.")
+            return redirect("auth:login")
 
         if not user.check_password(password):
-            return json_response(False, "Incorrect password.", status=200)
+            messages.error(request, "Invalid account number or password.")
+            return redirect("auth:login")
 
         if not user.is_active:
-            return json_response(False, "Could not log in.", status=200)
+            messages.error(request, "Account is not active.")
+            return redirect("auth:login")
 
+
+        send_verification_email(user, "login")
         login(request, user)
-        return json_response(
-            True, "Login successful.", {"account_number": account_number}
+        return redirect(reverse('auth:verify_login'))
+
+
+def send_verification_email(user, code_type):
+    verification_code = None
+    if code_type == "verification":
+        verification_code = user.generate_verification_code()
+    elif code_type == "login":
+        verification_code = user.generate_login_code()
+
+    verification_context = {
+        "user": user,
+        "subject": "Your Verification Code",
+        "verification_code": verification_code,
+    }
+
+    send_email(
+        "Verify Your Account", 
+        "email/auth/verification_code_email.html",  
+        verification_context,  
+        [user.email],  
+    )
+
+
+def resend_verification_email(request):
+    if request.method == "POST":
+        user = request.user
+
+        if user.is_verified:
+            messages.info(request, "Your account is already verified.")
+        else:
+            send_verification_email(user, "verification")
+            messages.success(request, "A new verification email has been sent.")
+        return redirect("dashboard:home")
+
+
+def resend_password_reset_email(request):
+    if request.method == "POST":
+        user = request.user
+
+        # Generate new reset token
+        reset_token = user.generate_reset_token()
+
+        # Send the Reset Token Email
+        reset_context = {
+            "subject": "Password Reset Code",
+            "reset_token": reset_token,
+        }
+
+        send_email(
+            "Reset Your Password", 
+            "email/auth/reset_token_email.html",  
+            reset_context,  
+            [user.email],  
         )
 
+        messages.success(request, "A new password reset email has been sent")
 
-@csrf_exempt
+
+def resend_verify_login_email(request):
+    if request.method == "POST":
+        user = request.user
+
+        send_verification_email(user, "login")
+        messages.success(request, "A new login verification email has been sent")
+        return redirect(reverse('auth:verify_login'))
+
+
+def verify_account(request):
+    if request.method == 'GET':
+        return render(request, f"{template_root}/verify_login.html")
+    
+    if request.method == 'POST':
+        try:
+            code = request.POST.get('verification_code')
+            user = get_object_or_404(User, verification_code=code)
+
+            # Optional: Check if the code has expired (10-minute window)
+            if user.verification_code_expiry and now() - user.verification_code_expiry > timedelta(minutes=10):
+                messages.error(request, 'Email verification code has expired. Please request a new code')
+                return redirect(reverse('auth:verify_account'))
+
+            # Mark the user as verified
+            user.verification_code = None
+            user.verification_code_expiry = None
+            user.is_verified = True
+            user.save()
+
+            messages.success(request, 'Your email has been successfully verified')
+            return redirect(reverse('user:dashboard'))
+
+        except Exception as e:
+            messages.error(request, 'Invalid code. Please request a new code')
+            return redirect(reverse('auth:verify_account'))
+
+
+def verify_login(request):
+    if request.method == 'GET':
+        return render(request, f"{template_root}/verify_login.html")
+    
+    if request.method == 'POST':
+        try:
+            code = request.POST.get('verification_code')
+            user = get_object_or_404(User, login_code=code)
+
+            # Optional: Check if the code has expired (10-minute window)
+            if user.login_code_expiry and now() - user.login_code_expiry > timedelta(minutes=10):
+                messages.error(request, 'Login verification code has expired. Please request a new code')
+                return redirect(reverse('auth:verify_login'))
+
+            # Mark the user as verified
+            user.is_logged_in_verified = True  # Set it to True once they verify
+            user.login_code = None
+            user.login_code_expiry = None
+            user.save()
+            
+            messages.success(request, 'Your email has been successfully verified!')
+            return redirect(reverse('user:dashboard'))
+
+        except Exception as e:
+            messages.error(request, f'Invalid code. Please request a new code')
+            return redirect(reverse('auth:verify_login'))
+
+
 def forgot_password_view(request):
     if request.method == "GET":
         return render(request, f"{template_root}/forgot_password.html")
@@ -162,11 +315,11 @@ def forgot_password_view(request):
             user = User.objects.get(email=email)
         except User.DoesNotExist:
             return json_response(
-                False, "User with this email does not exist.", status=400
+                False, "User with this email does not exist.", status=200
             )
 
         if not user.is_active:
-            return json_response(False, "Account is not active.", status=400)
+            return json_response(False, "Account is not active.", status=200)
 
         # Generate Reset Token
         reset_token = user.generate_reset_token()
@@ -182,7 +335,6 @@ def forgot_password_view(request):
         return json_response(True, "Password reset link sent to your email.")
 
 
-@csrf_exempt
 def reset_password_view(request, token):
     if request.method == "GET":
         return render(request, f"{template_root}/reset_password.html")
@@ -211,9 +363,12 @@ def reset_password_done_view(request):
     return render(request, f"{template_root}/reset_password_done.html")
 
 
-@csrf_exempt
 def logout_view(request):
     if not request.user.is_authenticated:
-        return json_response(False, "No user logged in", 400)
+        return redirect(reverse("app:home"))
+    
+    user = request.user
+    user.is_logged_in_verified = False
+    user.save()
     logout(request)
-    return json_response(True, "User logged out", 200)
+    return redirect(reverse("auth:login"))

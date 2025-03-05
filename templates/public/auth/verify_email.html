@@ -1,0 +1,104 @@
+{% extends './_base.html' %}
+{% load static %}
+
+{% block title %}
+Verify Your Login
+{% endblock %}
+
+{% block content %}
+<div class="w-full">
+    <div class="p-4 text-white bg-background_primary flex space-x-2 items-center">
+        <i class="ti ti-mail-check"></i>
+        <h2 class="font-bold text-xs md:text-lg"> Enter the 4-character verification code sent to your email.
+        </h2>
+    </div>
+
+    <div class="p-3 space-y-4 bg-white">
+        <form method="post" class="space-y-4">
+            {% csrf_token %}
+
+            <div class="flex space-x-2 justify-center">
+                <!-- 4 Digit Boxes -->
+                <input type="text" maxlength="1" pattern="[A-Za-z0-9]" class="otp-box" name="digit1" required>
+                <input type="text" maxlength="1" pattern="[A-Za-z0-9]" class="otp-box" name="digit2" required>
+                <input type="text" maxlength="1" pattern="[A-Za-z0-9]" class="otp-box" name="digit3" required>
+                <input type="text" maxlength="1" pattern="[A-Za-z0-9]" class="otp-box" name="digit4" required>
+            </div>
+
+            <input type="hidden" name="verification_code" id="verification_code">
+
+            <div class="flex items-center space-x-3 justify-center">
+                <button type="submit"
+                    class="px-10 py-3 rounded-md bg-background_primary text-white font-semibold text-sm">Verify</button>
+
+                <button type="reset"
+                    class="px-10 py-3 rounded-md border border-background_primary hover:bg-background_primary duration-300 text-background_primary hover:text-white font-semibold text-sm">Reset</button>
+            </div>
+        </form>
+
+        <div class="text-center text-sm text-gray-500 flex items-center mx-auto w-fit">
+            Didn't receive the code?
+            <form action="{% url 'auth:resend_verify_login' %}" method="post">
+                {% csrf_token %}
+                <button type="submit"
+                    class="px-4 py-2 rounded-md text-gray-500 font-medium hover:text-gray-800 focus:outline-none">Resend
+                    Code</button>
+            </form>
+        </div>
+
+        <!-- Security Disclaimer -->
+        <div class="mt-8 text-center text-xs text-gray-400">
+            <svg class="inline-block h-4 w-4 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                </path>
+            </svg>
+            <p class="mt-1">
+                We use bank-grade security measures to protect your information.
+            </p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .otp-box {
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        font-size: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        outline: none;
+        transition: border-color 0.2s;
+    }
+
+    .otp-box:focus {
+        border-color: #007bff;
+    }
+</style>
+
+<script>
+    const inputs = document.querySelectorAll('.otp-box');
+
+    inputs.forEach((input, index) => {
+        input.addEventListener('input', () => {
+            if (input.value.length === 1 && index < inputs.length - 1) {
+                inputs[index + 1].focus();
+            }
+            updateHiddenInput();
+        });
+
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Backspace' && !input.value && index > 0) {
+                inputs[index - 1].focus();
+            }
+        });
+    });
+
+    function updateHiddenInput() {
+        const code = Array.from(inputs).map(input => input.value).join('');
+        document.getElementById('verification_code').value = code;
+    }
+</script>
+{% endblock %}
