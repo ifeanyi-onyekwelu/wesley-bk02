@@ -64,7 +64,7 @@ WSGI_APPLICATION = "banking.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
+        "ENGINE": "django.db.backends.postgresql",
         "NAME": get_env_variable("MYSQL_NAME", "mydatabase"),
         "USER": get_env_variable("MYSQL_USER", "myuser"),
         "PASSWORD": get_env_variable("MYSQL_PASSWORD", "mypassword"),
@@ -104,9 +104,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-EMAIL_BACKEND = get_env_variable(
-    "EMAIL_BACKEND", "django.core.mail.backends.smtp.EmailBackend"
-)
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True

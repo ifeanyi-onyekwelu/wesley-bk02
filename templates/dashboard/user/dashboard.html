@@ -10,17 +10,21 @@ Dashboard
     <div class="p-3 border border-gray-700 text-white rounded-xs">
         <div class="flex flex-col md:flex-row space-x-4 items-center justify-between">
             <div class="space-y-1">
-                <h2 class="text-2xl font-normal">Good afternoon Ifeanichukwu Onyekwelu Anthony</h2>
+                <h2 class="text-2xl font-normal">Good afternoon
+                    {{ request.user.first_name }}
+                    {{ request.user.middle_name }}
+                    {{ request.user.las_name }}
+                </h2>
                 <p class="text-gray-500 text-sm">At a glance summary of your account</p>
             </div>
 
             <div class="flex items-center justify-between space-x-3">
-                <a href=""
+                <a href="{% url 'user:pay_a_biller' %}"
                     class="px-6 py-2 rounded-sm bg-blue-700 text-white hover:bg-blue-800 duration-300 font-semibold">
-                    Deposit
+                    Pay Bills
                     <i class="ti ti-arrow-right"></i>
                 </a>
-                <a href=""
+                <a href="{% url 'user:interbank_transfer' %}"
                     class="px-6 py-2 rounded-sm bg-gray-500 text-gray-700 hover:bg-gray-600 duration-300 font-semibold">
                     Transfer Fund
                     <i class="ti ti-arrow-right"></i>
@@ -39,7 +43,7 @@ Dashboard
 
                     <div>
                         <h4 class="text-blue-700 font-semibold text-xs">Last Login</h4>
-                        <p class="text-md text-gray-500">13 Feb 25, 14:14 pm</p>
+                        <p class="text-md text-gray-500">{{ request.user.last_login }}</p>
                     </div>
                 </div>
                 <div class="flex-flex-col space-y-4 w-full md:w-1/2">
@@ -47,12 +51,16 @@ Dashboard
                         <h1 class="h3 font-bold text-600 text-sm text-blue-600 mb-1">
                             Available balance
                         </h1>
-                        <p class="text-md font-bold text-white">USD 0</p>
-                        <p class="text-gray-500 text-md">Ifeanyichukwu Onyekwelu Anthony
+                        <p class="text-md font-bold text-white">USD {{ account.balance }}</p>
+                        <p class="text-gray-500 text-md">
+                            {{ request.user.first_name }}
+                            {{ request.user.middle_name }}
+                            {{ request.user.las_name }}
                         </p>
                     </div>
                     <div>
                         <h3 class="text-blue-600 text-sm font-bold">Your IP address</h3>
+                        <p class="text-gray-500 text-xs">{{ IP }}</p>
                     </div>
                 </div>
             </div>
@@ -64,7 +72,8 @@ Dashboard
                     <h3 class="text-lg font-semibold text-white">
                         Savings Account
                     </h3>
-                    <a href="" class="text-blue-600 text-md font-semibold">Transfer Fund</a>
+                    <a href="{% url 'user:interbank_transfer' %}" class="text-blue-600 text-md font-semibold">Transfer
+                        Fund</a>
                 </div>
                 <div class="p-5 bg-[#0D141D] rounded-sm space-y-2 w-full">
                     <div class="flex items-center text-white space-x-3">
@@ -86,7 +95,7 @@ Dashboard
                     <h3 class="text-lg font-semibold text-white">
                         Loans and lines of credit
                     </h3>
-                    <a href="" class="text-blue-600 text-md font-semibold">Pay Bills</a>
+                    <a href="{% url 'user:pay_a_biller' %}" class="text-blue-600 text-md font-semibold">Pay Bills</a>
                 </div>
                 <div class="flex md:flex-row flex-col md:space-x-5 space-y-3 md:space-y-0 ">
                     <div class="p-5 bg-[#0D141D] rounded-sm space-y-2 w-full md:w-1/2">
@@ -135,7 +144,7 @@ Dashboard
             </div>
 
             <div class="w-full md:w-1/4 flex items-center justify-center">
-                <a href=""
+                <a href="{% url 'user:support_ticket' %}"
                     class="w-full px-5 py-3 text-xs rounded-md border border-blue-600 text-blue-600 duration-300 hover:bg-blue-600 hover:text-white text-center">Get
                     Support Now</a>
             </div>

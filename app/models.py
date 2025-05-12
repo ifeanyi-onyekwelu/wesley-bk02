@@ -2,7 +2,8 @@ from django.db import models
 from django.contrib.auth import get_user_model
 import uuid
 import random
-from users.models import User
+
+User = get_user_model()
 
 
 def generate_account_number():
@@ -64,21 +65,24 @@ class BankAccount(models.Model):
 
 class Transfer(models.Model):
     TRANSFER_TYPES = [
-        ("intrabank", "IntraBank Transfer"),  # Within the same bank
-        ("interbank", "InterBank Transfer"),  # To another bank
+        ("interbank", "InterBank Transfer"),  # To the same bank
         ("wire", "Wire Transfer"),
         ("other", "Other Bank Transfer"),
     ]
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    bank_account = models.ForeignKey(BankAccount, on_delete=models.CASCADE)
-    sender = models.ForeignKey(
+    user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="sent_transfers"
     )
-    recipient_account_number = models.CharField(
-        max_length=20, blank=True, null=True
-    )  # For interbank transfers
-    recipient = models.ForeignKey(
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    recipient_account = models.ForeignKey(
+        BankAccount,
+        on_delete=models.CASCADE,
+        related_name="recipient_account",
+    )
+    sender = models.ForeignKey(
+        BankAccount, on_delete=models.CASCADE, related_name="sender_account"
+    )
+    wire_recipient = models.ForeignKey(
         Recipient, on_delete=models.CASCADE, blank=True, null=True
     )  # Links to the saved recipient
     amount = models.DecimalField(max_digits=12, decimal_places=2)

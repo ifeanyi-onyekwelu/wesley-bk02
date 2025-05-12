@@ -38,7 +38,7 @@ Verify Your Login
 
         <div class="text-center text-sm text-gray-500 flex items-center mx-auto w-fit">
             Didn't receive the code?
-            <form action="{% url 'auth:resend_verify_login' %}" method="post">
+            <form action="{% url 'auth:resend_verification' %}" method="post">
                 {% csrf_token %}
                 <button type="submit"
                     class="px-4 py-2 rounded-md text-gray-500 font-medium hover:text-gray-800 focus:outline-none">Resend
