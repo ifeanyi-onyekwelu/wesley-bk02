@@ -15,7 +15,9 @@ Add wire transfer recipient
         <div class="p-8 border border-gray-800 space-y-5 bg-[#141C26] shadow-mg shadow-black">
             <h3 class="font-semibold text-gray-600 text-md">Recipient's and banking information</h3>
 
-            <form class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <form class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" method="post">
+                {% csrf_token %}
+
                 <div class="space-y-2">
                     <label for="country" class="font-medium text-white text-md">Country</label>
                     <select name="country" id="country"
@@ -98,10 +100,12 @@ Add wire transfer recipient
                             placeholder="Account Number" />
                     </div>
                 </div>
-            </form>
 
-            <button type="submit"
-                class="w-full p-3 rounded-md bg-blue-700 hover:bg-blue-800 duration-300 text-white text-xm font-semibold">Continue</button>
+                <div class="col-span-3">
+                    <button type="submit"
+                        class="w-full p-3 rounded-md bg-blue-700 hover:bg-blue-800 duration-300 text-white text-xm font-semibold">Continue</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

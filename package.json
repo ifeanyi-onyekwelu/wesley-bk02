@@ -1,7 +1,7 @@
 {
   "scripts": {
     "build:css": "npx tailwindcss -i ./static/css/input.css -o ./static/css/styles.css --watch",
-    "dev": "concurrently \"python manage.py runserver\" \"npm run build:css\""
+    "dev": "concurrently \"python manage.py runserver 5500\" \"npm run build:css\""
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
